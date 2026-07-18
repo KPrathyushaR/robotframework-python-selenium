@@ -1,0 +1,53 @@
+ROBOTMCP Configuration in Kiro
+
+INSTALL rf-mcp:
+
+rf-mcp is a Python-based MCP server for Robot Framework
+
+If both web and api are required
+
+pip install rf-mcp[web,api]
+If only web is required
+
+pip install rf-mcp[web] robotframework-browser
+To install Playwright + browser binaries.
+
+rfbrowser init
+ 
+START THE ROBOTMCP SERVER:
+
+
+python -m robotmcp.server --transport http --host 127.0.0.1 --port 8000
+ 
+
+MCP CONFIGURATION for ROBOTMCP:
+
+Launch the Kiro application
+
+Open the Command Palette(Ctrl + Shift + P)
+
+Type the command Kiro: Open MCP Config. This opens the global mcp.json configuration
+
+Add the below configuration to the mcp.json file
+
+
+{
+  "mcpServers": {
+    "robotmcp": {
+      "type": "http",
+      "url": "http://localhost:8000/mcp"
+    }
+  }
+}
+ 
+
+SAMPLE PROMPT TO GENERATE THE ROBOT TESTSCRIPTS:
+
+
+
+Use #robotmcp to create TestSuite and execute it step wise
+Create a test for verifying the login that:
+	- Launch <WEB_APPLICATION_URL>  in incognito window
+	- click on Login with AAD
+
+

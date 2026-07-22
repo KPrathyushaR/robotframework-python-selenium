@@ -1,0 +1,176 @@
+# API  TESTING INTORDUCTION #
+============================================================
+1. What is API?
+Application Programming Interfance is a set of rules and protocols that allows two Application
+to communicate with each other.
+=================================================================================
+2. What is API Testing?
+API Testing - is a type of software testing that checks the functionality, 
+reliability, security and response of Apis.
+===================================================================================
+3. Why Do we Need API testing? Give the Example?
+-APIs are the backbone of modern application(web, mobile etc.,)
+-API Testing is faster than UI Testing.
+-It helps in early bug detection.
+- easy to automate
+-save time and cost
+
+example:-
+when you login to an app, the mobile app sends a request to the sever API to 
+validate your credentials.
+=======================================================================================
+4.What are the Types of APIS?
+Types of APIs:
+1. Public API - Available to everyone over the internet(e.g.,Google Maps API)
+2. Private API - used within an organzation, not exposed to public
+3. Partner API - shared with partner or third-party developers
+4. Composite API - combine muliple APIs into a single API
+=================================================================================================
+Common API protocols
+1. REST  - most widely used protocol, works over HTTP.
+2. SOAP  - protocol with strict rules,works over HTTP, XML based.
+3. GRAPHQL - Query Language for APIs, more flexible than REST.
+===========================================================================================
+Common HTTP Methods:
+1. GET, POST, PUT, PATCH, DELETE
+| Method               |    Description                                |
+| GET                  | retrieve data from the server                 |
+| POST                 |  send data to the server to create something  | 
+| PUT                  |    update existing data                       |
+| DELETE               |    delete data                                |
+| PAtCH                |    update partial data                        |
+===================================================================================
+Key Points;
+* API acts as a bridge between client and server.
+* API testing is done at the server logic.
+* it does not require UI.
+* Tools : Postman, Soap UI, RestAssured, JMeter etc.,
+==============================================================================================
+
+API Testing - HTTP request
+
+what is HTTP request?
+An HTTP request is a message sent by the client to the server to perform an action  or to retrievedata.
+=========================================================================
+ports of an HTTP request
+1. Request Line - containd HTTP method, URL and HTTP version.
+2. Headers - Contains metadata about the request.
+3. Body - contains the actual data to be sent(optional)
+
+Request Line Format
+method              Request URL         HTTP version
+GET                 /users/1            HTTP/1.1
+
+example: GET/users/1 HTTP/1.1
+===================================================================================================
+Common Headers in a request
+* Authorization -Contains authentication token or credentials.
+* Content -type - specifies  the format of the request Body.
+* Accept  - specifies  the format of the response expected.
+* User-Agent  - information about the client making the request.
+* Accept-Language - preferred Language for the response.
+
+** Headers provide extra information to the server about the request
+==================================================================================
+Request Body
+Request Boby is used to send the data to the server.
+It is mainly used in POST, PUT, PAtCH Methods.
+The body is usually in JSON or XML format.
+
+Example:
+{
+    "name":"John",
+    "age":67
+    }
+==================================================================================
+Structure of HTTP Request
+GET/users/1 HTTP.1.1     -> request Line
+Host: api.example.comb
+Authorization: Bearer abcdefgh1234r5
+Content-Type: application/JSON                   ->     Headers
+User-Agent: PostamanRuntime/7.32.0
+
+{
+    "name":"John", 
+    "Age": 89
+}
+
+Tip: Always set the correct content type header based on the body format.
+
+JSON - application/JSON
+XML - application/JSON
+Form Data - multipart/form-data
+=====================================================================================
+Key Points:
+* Every API response starts with an HTTP method.
+* Headers provide metadata and control the request.
+* request body is optional and depends on the method.
+* GET  requests is not have a body
+* Use Tools like Postman, SoapUI, or rest assured to send requests.
+==============================================================================================
+=================================================================================
+API TESTING - HTTP response
+
+what is HTTP response?
+An HTTP response is the message returned by the server to the clients sfter processing the request.
+
+parts of an HTTP response
+1. Status Line - contains http version, status code and status message
+2. Headers - contains metadata about the response.
+3. Body - Contains  the actual data returned from the server.
+
+example: 
+After successful login, the server send a response with status 200 ok and user 
+details in JSON format.
+=================================================================
+Status Code:
+1xx, 2xxx,3xx,4xx,5xx
+1xx - information -request received, containing process - 100 continue
+2xxx  -Success - request succesfully received, understood and Accepted. - 200 0k, 201 created.
+3xx - redirection - futher action needs to be taken to complete the request. - 301 moved permanently, 304 not modified.
+4xx - Client error  - request contains bad syntax or cannot be fulfilled - 400 bad request, 401 unauthorized, 403- forbidden
+5xx- server error  - server failed to fulfil a valid request - 500 internet server error, 502 bad gateway
+==============================================================================
+
+Common response headers:
+Content-type  - tells the format of the response body
+Content-length - tells the size of the rsponse body
+Date - tells the date and time when the response is generated
+Server - tells the server name and version
+Set-cookie - used to send cookie from server to client
+
+Complete HTTP Response example
+---------------------------------
+HTTP/1.1 200 OK -> status Line
+Content-Type: application/json
+Content-length:125
+Date: sat, 18 July 2026 16:25:30 GMT
+Server:Apache/2.4.52
+
+{
+    "id":101,
+    "name":"John Doe",
+    "email":"john@example.com"
+}
+
+===================================================================================================
+API Testing - Request Parameters
+==================================================
+what are Parameter?
+Parameters are the data values that we send along with the request to filter, 
+search, or provide additional information to the server.
+
+Types of Parameter:
+1.Query Parameter   - sent in the URL after ?
+2.Path Parameter    - included in the URL Path
+3.Header Parameter  - sent in the request header
+4. Body Parameter  - sent in the request body
+
+example:
+GET/ users?name=John&age=25&city=Hyd
+
+
+
+
+
+

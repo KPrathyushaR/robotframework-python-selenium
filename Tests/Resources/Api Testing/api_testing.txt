@@ -32,7 +32,7 @@ Common API protocols
 3. GRAPHQL - Query Language for APIs, more flexible than REST.
 ===========================================================================================
 Common HTTP Methods:
-1. GET, POST, PUT, PAtCH, DELETE
+1. GET, POST, PUT, PATCH, DELETE
 | Method               |    Description                                |
 | GET                  | retrieve data from the server                 |
 | POST                 |  send data to the server to create something  | 

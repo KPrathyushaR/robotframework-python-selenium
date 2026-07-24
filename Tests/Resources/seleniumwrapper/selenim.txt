@@ -1,0 +1,172 @@
+====================================================================
+Selenium Notes:
+==================================================================
+What is Selenium?
+Selenium is an open-source automation tool used to automate web browsers.
+It supports:
+Chrome
+Firefox
+Edge
+Safari
+
+Languages:
+Python 
+Java
+C#
+JavaScript
+Ruby
+
+Why Selenium?
+Imagine you want to automate this process:
+Open Chrome
+Open Gmail
+Enter email
+Enter password
+Click Login
+Verify Inbox
+
+Instead of doing it manually every time, Selenium performs these actions automatically.
+
+Selenium Components
+1. Selenium IDE
+- Browser extension
+- Record and playback
+- Good for beginners
+
+2. Selenium WebDriver 
+- Most widely used.
+- Writes automation scripts using code.
+3. Selenium Grid
+-Run tests:
+- Parallel
+- Multiple browsers
+- Multiple operating systems
+
+Selenium Architecture
+Python Code
+      ↓
+Selenium WebDriver API
+      ↓
+Browser Driver (ChromeDriver/EdgeDriver)
+      ↓
+Chrome Browser
+
+The WebDriver API sends commands to the browser driver, which controls the browser.
+=========================================================================================
+Module 2: Installation
+Install Selenium
+pip install selenium
+
+Check installation:
+
+pip show selenium
+First Selenium Program
+
+from selenium import webdriver
+driver = webdriver.Chrome()
+driver.get("https://www.google.com")
+print(driver.title)
+driver.quit()
+
+Output:
+Google
+Understanding the Code
+Import Selenium
+from selenium import webdriver
+Imports the Selenium WebDriver module.
+Launch Browser
+driver = webdriver.Chrome()
+Starts a new Chrome browser session.
+Open Website
+driver.get("https://google.com")
+Navigates to the specified URL.
+Get Title
+print(driver.title)
+Returns the page title.
+Close Browser
+driver.quit() - Closes all browser windows and ends the session.
+
+Browser Commands
+Open URL
+driver.get("https://amazon.in")
+Current URL
+print(driver.current_url)
+Page Source
+print(driver.page_source)
+Maximize Window
+driver.maximize_window()
+Minimize Window
+driver.minimize_window()
+Refresh Page
+driver.refresh()
+Back
+driver.back()
+Forward
+driver.forward()
+
+Locators
+A locator tells Selenium how to find an element.
+
+Example HTML:
+<input id="username" name="user">
+
+Locate by ID:
+
+driver.find_element(By.ID, "username")
+Types of Locators
+ID - driver.find_element(By.ID, "username")
+Name - driver.find_element(By.NAME, "username")
+Class Name - driver.find_element(By.CLASS_NAME, "login")
+Tag Name - driver.find_element(By.TAG_NAME, "input")
+Link Text - driver.find_element(By.LINK_TEXT, "Login")
+Partial Link Text - driver.find_element(By.PARTIAL_LINK_TEXT, "Log")
+CSS Selector - driver.find_element(By.CSS_SELECTOR, "#username")
+XPath - driver.find_element(By.XPATH, "//input[@id='username']")
+Interacting with Elements
+Example:
+<input id="username">
+<button>Login</button>
+Enter text: driver.find_element(By.ID, "username").send_keys("Admin")
+
+Click: driver.find_element(By.TAG_NAME, "button").click()
+
+Clear input: driver.find_element(By.ID, "username").clear()
+
+WebElement Methods
+Get text:element.text
+
+Get attribute: element.get_attribute("value")
+
+Check if displayed: element.is_displayed()
+
+Check if enabled: element.is_enabled()
+
+Check if selected: element.is_selected()
+
+Waits:
+Modern web pages load elements asynchronously. Waiting helps avoid errors.
+
+Implicit Wait:- driver.implicitly_wait(10)
+
+Waits up to 10 seconds when searching for elements.
+
+Explicit Wait
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+wait = WebDriverWait(driver, 10)
+element = wait.until(
+    EC.visibility_of_element_located((By.ID, "username"))
+)
+
+Preferred because it waits for a specific condition.
+
+Example: Login
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+driver = webdriver.Chrome()
+driver.get("https://example.com/login")
+driver.find_element(By.ID, "username").send_keys("admin")
+driver.find_element(By.ID, "password").send_keys("password")
+driver.find_element(By.ID, "login").click()
+driver.quit()

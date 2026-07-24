@@ -1,0 +1,296 @@
+What is Robot Framework?
+Robot Framework is an open-source test automation framework that uses keyword-driven testing.
+
+Example:
+
+*** Test Cases ***
+Open Google
+    Open Browser    https://google.com    chrome
+    Close Browser
+
+Instead of writing Python code, you write readable keywords.
+Advantages:
+- Easy to learn
+- Reusable keywords
+- Excellent reports
+- Supports Selenium
+- Supports API testing
+- Supports Database testing
+================================================================================= 
+Installation:-
+
+Install Python:-
+---------------
+python --version
+
+Install Robot Framework:-
+---------------------------
+pip install robotframework
+
+Install Selenium Library:-
+------------------------------
+pip install robotframework-seleniumlibrary
+
+Install Browser Driver:-
+--------------------------------
+Example:
+Chrome
+chromedriver.exe
+
+or use Selenium Manager (latest Selenium versions automatically manage drivers).
+
+Verify:-
+                robot --version
+=====================================================================================
+Project Structure
+AutomationFramework/
+
+│
+├── Tests
+│      Login.robot
+│      Search.robot
+│
+├── Resources
+│      keywords.robot
+│      variables.robot
+│
+├── Libraries
+│      custom_library.py
+│
+├── Reports
+│
+├── Results
+│
+└── requirements.txt
+==============================================================================
+Robot File Structure:-
+
+*** Settings ***
+
+*** Variables ***
+
+*** Test Cases ***
+
+*** Keywords ***
+
+Every Robot file follows this format.
+===============================================================================
+Settings Section
+*** Settings ***
+Library    SeleniumLibrary
+
+Import libraries here.
+
+Import resource files
+
+Resource    ../Resources/keywords.robot
+================================================================================
+Variables
+*** Variables ***
+
+${URL}    https://opensource-demo.orangehrmlive.com
+
+${BROWSER}    chrome
+
+Use
+
+Open Browser    ${URL}    ${BROWSER}
+=====================================================================================
+Test Cases
+*** Test Cases ***
+
+Launch Browser
+
+    Open Browser    https://google.com    chrome
+
+    Maximize Browser Window
+
+    Close Browser
+======================================================================================
+Browser Keywords
+-----------------
+Open Browser
+Open Browser    https://google.com    chrome
+Maximize
+Maximize Browser Window
+Go To
+Go To    https://amazon.in
+Reload
+Reload Page
+Close
+Close Browser
+Close all
+Close All Browsers
+=================================================================
+Locators
+Robot Framework supports
+id:
+name:
+css:
+xpath:
+class:
+link:
+partial link:
+
+Example
+
+id=username
+css=input[name='username']
+xpath=//input[@name='username']
+Module 10: Input Text
+Input Text
+
+    id=username
+
+    Admin
+
+Equivalent
+
+driver.find_element(By.ID,"username").send_keys("Admin")
+===================================================================
+Click Element
+----------------------
+Click Element
+
+    xpath=//button[@type='submit']
+====================================================================
+Module 1: Login Example
+*** Settings ***
+Library    SeleniumLibrary
+
+*** Variables ***
+${URL}    https://opensource-demo.orangehrmlive.com
+
+*** Test Cases ***
+Login Test
+    Open Browser    ${URL}    chrome
+    Maximize Browser Window
+    Input Text    name=username    Admin
+    Input Password    name=password    admin123
+    Click Button    xpath=//button[@type='submit']
+    Close Browser
+======================================================================================
+Verification:-
+----------------------------
+Title               Title Should Be       OrangeHRM
+URL                 Location Should Be      https://example.com
+Text                Element Text Should Be      id=message
+Login Successful
+==========================================================================================
+Module2 : Waits
+Never use Sleep unless necessary.
+Good practice
+Wait Until Element Is Visible       id=username     10s
+Wait Until Element Is Enabled
+Wait Until Element Is Not Visible
+=========================================================================================
+Module 3: Dropdown
+Select From List By Label       id=country      India
+
+By value
+
+Select From List By Value       id=country      IN
+===========================================================================================
+Module 4: Checkbox
+Check:-
+Select Checkbox
+id=remember
+
+Uncheck:-
+Unselect Checkbox
+========================================================================================
+Module 5: Radio Button
+Select Radio Button     gender      Female
+=======================================================================================
+Module 6: Alerts
+Handle Alert
+accept=True
+Dismiss
+
+Handle Alert    action=DISMISS
+=====================================================================================
+Module 7: Frames
+Select Frame
+id=frame1
+Back
+
+Unselect Frame
+====================================================================================
+Module 8: Windows
+Switch Window
+
+title=Amazon
+
+Module 9: Scrolling
+Execute Javascript
+
+window.scrollTo(0,500)
+===================================================================================
+Module 10: Mouse Actions
+Hover
+Mouse Over
+xpath=...
+Double Click
+Double Click Element
+Right Click
+Open Context Menu
+
+Module 11: Keyboard Actions
+Press Keys
+
+id=username
+
+CTRL+A
+======================================================================================
+Module 11: Screenshots
+Capture Page Screenshot
+Module 12: Assertions
+Element Should Be Visible
+Page Should Contain
+Element Should Contain
+Page Should Contain Element
+=====================================================================
+Module 13: Reusable Keywords
+
+*** Keywords ***
+Login
+    Input Text  id=username     Admin
+    Input Password  id=password     admin123
+    Click Button    id=login
+
+*** Test Cases ***
+Login Test
+    Login
+
+==================================================================
+Module 14: Resource File
+keywords.robot
+*** Keywords ***
+Launch Browser
+    Open Browser    ${URL}      chrome
+
+Resource        ../Resources/keywords.robot
+=================================================================
+Module 15: Variables File
+*** Variables ***
+
+${USERNAME}     Admin
+${PASSWORD}     admin123
+
+-Scalar variables -${}
+-List Variables -@
+-dictinary variables-&
+==============================================================
+Module 16: Running Tests
+Run single file     robot Login.robot
+
+Run folder  robot Tests/
+
+Specify output  robot --outputdir Results Tests/
+=======================================================
+Module 17: Reports
+Robot automatically generates:
+* log.html
+* report.html
+* output.xml
+These help analyze passed and failed tests.

@@ -1,0 +1,223 @@
+===============================================================
+                       SQL LEARNING NOTES
+========================================================================
+SQL is structured Query Language is communicate with databases.
+it helps us to store, retrieve, update and manage data in a database.
+
+Database and Table:
+- A Database is a collection of related data.
+- A Table is a collection of data in rows and columns
+
+example:Employees
+
+Emp ID | Name | Department | Salary
+1    Alice   HR   60000
+2    Max     IT   50000
+3    Charlie  Finance  50000
+
+
+SELECT - is used to retrieve data from a table.
+FROM - is used to specify the table from which we want to retrieve data.
+WHERE - is used to filter records based on a condition.
+
+SELECT Name, Salary
+FROM Employees;
+
+SELECT Name, Salary
+FROM Employees
+WHERE Salary > 50000;
+
+*** SQL Keywords are not case Sensitive.
+*** Select is same as select
+
+#### Sorting and Filtering
+1.ORDER BY - used to sort the data set in ascending or descending order.
+2. LIMIT - used to limit the number of rows returned.
+3. DISTINCT - used to return only DISTINCT(unique)
+4. LIKE - used to WHERE clause to search for a specific pattern
+5. IN - used to specify muliple possible values in a where clauses.
+6. BETWEEN - used to filter records within a given range.
+7. GROUP BY - used to group records based on requirement.
+8. HAVING - used to filter groups.
+
+####
+SELECT * FROM Employees
+ORDER BY Salary ASC;
+
+SELECT * FROM Employees
+ORDER BY Salary DESC;
+
+SELECT DISTINCT Department FROM Employees;
+
+SELECT * FROM Employees
+WHERE Name LIKE 'A%';
+
+SELECT * FROM Employees
+WHERE Department IN ('HR','IT');
+
+SELECT * FROM Employees
+WHERE salary BETWEEN 5000 AND 7000;
+
+1. What is Database?
+It is an oragnised collection of data.so that it can be easily accessed.
+To manage these databases, DBMS are used.
+
+Types of DBMS:
+1)Relational DBMS - data stored in table format.
+2)Non-relational DBMS - data stored in key - value pairs.
+
+SQL Create Command:
+--------------------
+It is used for creating tables.
+
+syntax:- CREATE TABLE tablename(
+    Column 1 datatype,
+    Column 2 datatype,
+);
+
+CREATE TABLE User(
+    Roll_no INT,
+    First_name Varchar,
+    Last_name Varchar,
+    Email_ID Varchar,
+);
+
+
+SQL Insert:
+------------------
+It is used to insert data into tables.
+
+Syntax:-
+INSERT INTO tableName(Column1, columns2)
+Values(Values1, values2);
+
+A row of datdabase table - record or a tuple
+A Column of database table - attribute
+
+For Ex:
+INSERT INTO User(First_name,Last_name,Email_ID, Password)
+Values(JAI, SHARMA, abc@gmail.com, abc1234)
+
+SELECT * FROM USERS;
+
+How does the SQL Works?
+SQL QUERY--->Query Language Processor --> DBMS Engine ----> Physical Database
+
+Passsing:- In this process, Query statement is tokenized.
+Join:- It is used to combine data from tables based on as common field.
+1.INNER JOIN - iot returns the dataset that have matching values in both tables
+2. LEFT JOIN - it returns all records from the left table and matched records from the right.
+3. RIGHT JOIN - it returns all records from the right table and matched records from the left.
+4. FULL JOIN  - it returns all ecords when there is a match in either the left table or right table.
+====================================================================
+Types of error:
+1. Syntax Error
+2. Semantic Error
+3. Constraint Voilation
+4. Data type Error
+5. Transaction Error
+================================================================
+Constraints:-
+1. Check
+2. Not Null
+3. Unique
+4. Primary Key
+5. Default
+6. Foreign Key
+7. Index
+These constraint are known as Integrity Constraints.
+
+Difference between Alter and update:
+Alter:
+- It is a DDL.
+- It is used for adding, deleting and modifying attribiute of the table.
+- Changes are made to the table structure.
+Update:
+- It is a DML.
+- It is used from updating the data in the existing data.
+- Changes are made to the data.
+================================================================
+SQL QUERY EXECUTION ORDER
+-------------------------
+FROM-->JOIN-->WHERE-->GROUP BY-->HAVING-->SELECT-->ORDER BY-->LIMIT
+
+================================================================
+SQL Update:
+- It is uded to modify existing data in table.
+syntax:- UPDATE table_nbame
+         SET column 1 = value1, column 2=value2
+         Where same_column= same_values;
+
+SET- it is used to specifyh the column and values to update.
+
+SQL DELETE:
+-it is used to remove exosting record from a table in a SQL database.
+syntax:- DELETE FROM Table_name WHERE condition;
+
+Note:-This operation is not reverisable, so be careful where using DELETE statements.
+================================================================================
+SQL wild cards:
+--------------
+- Wild cards are special character used in SQL 'LIKE' operator to search for a specific pattern in a column of a table.
+- The percentage sign (%) represnets zero or one or mulitple character.
+- the underscore sign(_) represents one, single character.
+
+SQL IN:- it is used to specify multiple values in a WHERE Clause for filtering data.
+SQL Between:- It is used to filter the data based on a range of values in a WHERE Clause.
+SQL Alias:- it is used to give a temporary name to a table or colun in a query.
+SQL Union operator: it is used to combine results set of two or more statuements into a single result set.
+GROUP BY:- it is used to group rows that have the same values into summary rows, like "find the number of customers in each city".
+HAVING:- it is used to filter the reults of a 'GROUP BY' query based on the values of an aggeregate function.
+SQL Exists:- it is used to check if as subquery retursns any rows.
+SQL All:- it is used to compare a values with the result of a subquery.it returns true if the value is true for all elements.
+SQL ANY:- it is also a comparision operator. it returns true if the value is true for at least one element.
+==========================================================================================================
+Primary Key and Foreign Key:
+----------------------------
+Primary Key:- It is unique value that is used to identify a row in a table.
+-if you are thinking about the unique Constant., then you must know the Difference.
+-Unquie Constants can store nul value also Primary key can't store null value.
+
+Syntax:-  CREATE TABLE tablename(
+            column1 datatype,
+            columns2 dtatype,
+            ................
+            primary key(column name)
+            );
+
+Foreign Key:- It is a key which is used to link two table together.
+syntax:-  CREATE TABLE tablename(
+            column1 datatype,
+            columns2 datatype,
+            Foreign key(column1.....)
+            Reference[primary key tablename]
+            );
+
+Commit and Rollback:
+-------------------
+Commit:- It is used to storing changes permantely performed by a Transaction.
+Rollback:-It is used for reverting changes performed by a Transaction.
+==============================================================================
+Aggregate Functions:
+--------------------
+Aggregate functions perform a calucation on a set of values and return a single values.
+1.COUNT():-
+-returns the number of rows
+syntax: SELECT COUNT(*) FROM Employees;
+
+2. SUM():-
+- returns the total sum of a numeric column.
+syntax:- SELECT SUM(salary) FROM Employees;
+
+3.AVG():-
+-returns the average value of a numeric colummn.
+syntax:- SELECT AVG(Salary) FROM Employees;
+
+4.MIN():-
+- returns the minimum value of a numeric column.
+syntax:- SELECT MIN(Salary) FROM Employees;
+
+5.MAX():-
+-returns the maximum value of a numeric column
+syntax: SELECT MAX(Salary) FROM Employees;
+

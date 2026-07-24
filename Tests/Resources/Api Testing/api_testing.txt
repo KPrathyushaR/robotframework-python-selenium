@@ -168,9 +168,3 @@ Types of Parameter:
 
 example:
 GET/ users?name=John&age=25&city=Hyd
-
-
-
-
-
-

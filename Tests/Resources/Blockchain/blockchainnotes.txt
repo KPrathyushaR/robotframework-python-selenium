@@ -1,0 +1,370 @@
+Blockchain Fundamentals (Most Important)
+1. What is Blockchain?
+Answer: Blockchain is a distributed ledger that stores data in blocks connected using cryptographic hashes. 
+Every participant has a copy of the ledger, making it decentralized, transparent, and tamper-resistant.
+
+Example:
+Block 1
+ ↓
+Block 2
+ ↓
+Block 3
+
+Every block contains:
+Transactions
+Previous block hash
+Current block hash
+Timestamp
+Nonce
+
+2. Why Blockchain instead of Database?
+Database	Blockchain
+Centralized	Decentralized
+Editable	Immutable
+Single owner	Multiple participants
+Fast	Slightly slower
+Easy to modify	Cannot modify old records
+
+3. Types of Blockchain
+Public
+Ethereum
+Bitcoin
+Private
+Hyperledger Fabric
+Consortium
+Hybrid
+
+Interview Question:
+Difference between Ethereum and Hyperledger?
+Answer:
+Ethereum
+Public blockchain
+Uses Ether
+Smart Contracts in Solidity
+
+Hyperledger
+Permission-based
+No cryptocurrency
+Enterprise applications
+Smart Contracts
+
+What is Smart Contract?
+A smart contract is a program stored on blockchain.
+Example:
+Instead of
+If payment received
+    Ship Product
+the blockchain automatically executes this logic.
+
+Interview Question
+What should QA verify in Smart Contracts?
+Answer:
+Business logic
+Input validation
+Event generation
+State changes
+Unauthorized access
+Gas usage
+Transaction status
+Error handling
+Solidity
+
+Interviewers usually ask
+What is Solidity?
+Answer:- Solidity is the programming language used to develop Ethereum Smart Contracts.
+
+QA need not develop contracts but should understand:
+contract Bank {
+function deposit(){}
+function withdraw(){}
+}
+
+Test Cases
+
+Deposit succeeds
+Withdraw succeeds
+Balance updates
+Invalid withdrawal rejected
+Ethereum Architecture
+
+Know these components
+
+User
+
+↓
+
+Wallet (MetaMask)
+
+↓
+
+DApp
+
+↓
+
+Web3
+
+↓
+
+Ethereum Node
+
+↓
+
+Blockchain
+
+Interview:
+
+Explain transaction flow.
+
+Web3
+
+Definition: Web3 allows applications to interact with blockchain.
+
+Libraries
+Web3.js
+Ethers.js
+
+QA verifies
+
+Wallet connection
+Transaction confirmation
+Balance updates
+Wallet Testing
+
+Very important.
+
+Wallets:
+
+MetaMask
+WalletConnect
+Coinbase Wallet
+
+Test Cases
+✓ Wallet connects
+✓ Wallet disconnects
+✓ Wrong network
+✓ Invalid signature
+✓ User rejects transaction
+✓ Wallet locked
+✓ Multiple wallets
+✓ Session timeout
+
+Interview
+How do you test MetaMask?
+
+Answer
+Install extension
+Connect wallet
+Sign transaction
+Reject transaction
+Verify blockchain update
+ERC Tokens
+
+Know these
+ERC-20
+Fungible
+
+Example
+1 Token = 1 Token
+
+ERC-721
+NFT
+Every token unique.
+
+ERC-1155
+Supports both.
+
+Interview:
+Difference between ERC20 and ERC721?
+
+Cryptocurrency Transactions
+Life Cycle
+
+Create
+↓
+Sign
+↓
+Broadcast
+↓
+Mining
+↓
+Confirmation
+↓
+Completed
+
+QA verifies
+
+Status
+Hash
+Gas
+Balance
+Gas Fee
+
+Question
+
+What is Gas?
+Answer: Gas is the transaction fee paid to execute blockchain operations.
+
+Interview
+Why transaction failed?
+
+Possible reasons
+Insufficient gas
+Invalid signature
+Smart contract revert
+Network congestion
+DApps
+
+Definition
+Applications running on blockchain.
+
+Examples
+
+Uniswap
+OpenSea
+
+Testing
+Login
+Wallet
+Transaction
+NFT Purchase
+Staking
+Rewards
+DeFi
+
+Definition
+Decentralized Finance.
+
+Examples
+Lending
+Borrowing
+Staking
+Yield Farming
+
+QA verifies
+Interest calculation
+Reward calculation
+Liquidity updates
+NFT
+
+Questions
+What is NFT?
+Unique digital asset.
+
+Test Cases
+Mint NFT
+Transfer NFT
+Sell NFT
+
+Ownership change
+Duplicate prevention
+Blockchain APIs
+
+Examples
+POST
+/sendTransaction
+GET
+/balance
+
+Validate
+Status Code
+JSON
+Block Number
+Hash
+Signature
+SQL + Blockchain
+
+Interview
+Why SQL?
+Blockchain stores immutable data.
+
+Application stores
+User Profile
+Login
+Reports
+Audit
+Verify
+
+Blockchain balance = Database balance
+
+Automation
+Possible Question
+Can Selenium automate blockchain?
+Yes.
+
+Flow
+Selenium
+↓
+Open DApp
+↓
+Connect Wallet
+↓
+MetaMask
+↓
+Approve
+↓
+Verify Transaction
+
+Automation Tools
+
+Selenium
+Playwright
+Robot Framework
+Cypress
+WebdriverIO
+API Testing
+
+Use
+Postman
+REST Assured
+
+Validate
+Transaction ID
+Block Number
+Status
+Hash
+Performance Testing
+
+Check
+TPS
+(Transaction Per Second)
+Concurrent users
+Response time
+Node synchronization
+Security Testing
+
+Important
+Verify
+Replay attacks
+Double spending
+Unauthorized wallet
+SQL Injection
+XSS
+CSRF
+Signature validation
+Defect Examples
+
+Example
+Summary
+Wallet connects successfully but transaction remains Pending indefinitely.
+Steps
+Connect MetaMask
+Click Send
+Approve
+Expected
+Transaction Success
+Actual
+Pending forever
+Severity
+High
+=====================================================================================================
+CI/CD
+Git
+↓
+Jenkins
+↓
+Automation
+↓
+Report
+↓
+Deployment
+================================================================================================================

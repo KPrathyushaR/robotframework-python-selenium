@@ -1,0 +1,169 @@
+AUTOMATION QUESTIONS
+31. Selenium with MetaMask
+Answer: Selenium automates the DApp, while MetaMask interactions can be handled using browser extensions, separate browser profiles, or automation libraries where appropriate.
+
+Flow
+Open DApp
+↓
+Connect Wallet
+↓
+Approve Transaction
+↓
+Verify Success
+
+32. Playwright
+Answer: Playwright supports Chromium, Firefox, and WebKit, offers auto-waiting, and can automate modern web applications efficiently.
+
+33. API Validation
+Verify
+Status code
+Response body
+Transaction hash
+Block number
+Error messages
+
+Example
+POST /transfer
+
+Response
+200 OK
+
+Transaction Hash
+0xABC123
+
+34. Web3 Testing
+Verify:
+Wallet connection
+Smart contract calls
+Events
+Token transfers
+Transaction confirmations
+
+35. SQL Validation
+Compare
+Database
+Balance
+100
+Blockchain
+Balance
+100
+
+Both should match where the application synchronizes on-chain and off-chain data.
+
+36. Jenkins Integration
+Pipeline
+Git Push
+↓
+Build
+↓
+Automation Tests
+↓
+Reports
+↓
+Deployment
+
+QA verifies
+
+Tests executed
+Reports generated
+Build status
+Notifications
+
+SCENARIO QUESTIONS
+37. Transaction stuck in pending state
+Answer
+Possible reasons
+Low gas price
+Network congestion
+Node synchronization issue
+Nonce issue
+
+QA checks
+Transaction hash
+Gas price
+Network status
+Node logs
+
+38. Smart contract executed but database not updated
+Answer: Possible reasons
+API failure
+Event listener failure
+Database issue
+Queue failure
+
+Investigation:
+Verify blockchain transaction
+Check API logs
+Verify event processing
+Validate database records
+
+39. Wallet connected but balance incorrect
+Answer: Possible reasons:
+Wrong network
+Cache issue
+API delay
+Incorrect wallet address
+
+Checks
+Wallet address
+Network selection
+Blockchain explorer
+API response
+
+40. NFT transferred but ownership unchanged
+Answer: Possible reasons
+UI cache
+Event not processed
+Indexing delay
+
+Verify:
+Blockchain owner
+Marketplace database
+Front-end refresh
+Event logs
+
+41. API returns success but blockchain shows failure
+Answer:Possible reasons
+API acknowledged the request before blockchain confirmation.
+Smart contract execution failed.
+Transaction was reverted.
+
+Verify:
+Transaction hash
+Blockchain status
+Error reason
+API logs
+
+42. Duplicate transaction recorded
+Possible reasons:
+User submitted twice
+Retry mechanism
+Idempotency issue
+
+Verify
+Transaction hashes
+Request IDs
+Backend logs
+
+43. Wrong network selected in MetaMask
+Expected behavior:
+Display "Wrong Network" message.
+Disable blockchain actions.
+Prompt user to switch to the supported network.
+
+44. User rejects wallet signature
+Expected behavior:
+Transaction not submitted.
+Clear error message displayed.
+No blockchain state changes.
+User can retry.
+
+45. Transaction mined but UI not updated
+Possible reasons:
+UI cache
+Event listener delay
+API synchronization issue
+
+Checks: Confirm transaction on-chain.
+Refresh application state.
+Verify event listener and API responses.

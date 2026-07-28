@@ -1,0 +1,346 @@
+1. What is Blockchain?
+Answer: Blockchain is a decentralized digital ledger that stores transactions in linked blocks. 
+Every block is connected using cryptographic hashes, making the data secure and difficult to alter.
+
+Example
+Imagine a shared Google Sheet that everyone can view, but once a row is added, no one can edit or delete it. Every participant has an identical copy.
+Block 1 → Block 2 → Block 3 → Block 4
+Interview Tip
+"Blockchain is an immutable, decentralized ledger where every transaction is verified by network participants instead of a central authority."
+
+2. Explain a Block.
+Answer: A block is a collection of verified transactions. Each block contains:
+
+Transaction data
+Previous block hash
+Current block hash
+Timestamp
+Nonce
+Example
+Block #102
+Transaction:
+Alice → Bob : 5 ETH
+Timestamp:
+10:30 AM
+Previous Hash:
+ABC123
+Current Hash:
+XYZ789
+QA Validation
+Verify transaction is stored.
+Verify block number.
+Verify timestamp.
+Verify transaction hash.
+
+3. What is Hash?
+Answer: A hash is a unique cryptographic fingerprint generated from the block's data.
+Even a tiny change in data produces a completely different hash.
+
+Example
+Input:
+Hello
+
+Hash:
+8b1a9953c4611296...
+
+If changed to:
+hello
+
+The hash becomes completely different.
+Interview Tip
+
+Hash ensures data integrity.
+
+4. What is Mining?
+Ans: Mining is the process of validating blockchain transactions and adding new blocks.
+Miners solve complex mathematical puzzles and receive rewards.
+Example
+User sends 2 ETH
+↓
+Miners verify
+↓
+Block added
+↓
+Miner receives reward
+5. Difference between Ethereum and Bitcoin
+Bitcoin	Ethereum
+Digital currency	Blockchain platform
+Uses BTC	Uses ETH
+Limited scripting	Smart Contracts
+Mainly payments	DApps and DeFi
+Example
+Bitcoin
+Pay ₹500
+
+Ethereum
+If payment received
+Automatically transfer NFT
+
+6. Public vs Private Blockchain
+Public	Private
+Anyone can join	Permission required
+Ethereum	Hyperledger
+Transparent	Restricted
+Cryptocurrency	Enterprise
+Example
+
+Public
+Anyone can view transactions.
+
+Private
+Only company employees can access.
+
+7. What is a Consensus Algorithm?
+Ans: A consensus algorithm allows all blockchain nodes to agree on the validity of transactions.
+Popular Algorithms
+Proof of Work
+Proof of Stake
+PBFT
+Example
+10 nodes verify one transaction.
+If most nodes approve,
+Transaction Valid
+
+8. What is Proof of Work?
+Ans: Proof of Work requires miners to solve difficult mathematical puzzles.
+Used By
+Bitcoin
+Pros
+Highly secure
+Cons
+High electricity consumption
+Slower
+
+9. What is Proof of Stake?
+Ans: Validators are selected based on the cryptocurrency they have staked.
+Used By
+Ethereum 2.0
+Pros
+Faster
+Energy efficient
+Example
+Stake
+100 ETH
+Higher chance of becoming validator.
+
+10. What is a Node?
+Ans: A node is a computer connected to the blockchain network.
+Nodes:
+Store blockchain data
+Validate transactions
+Share blocks
+Types
+Full Node
+Light Node
+Validator Node
+====================================================================================
+SMART CONTRACT QUESTIONS
+11. What is Solidity?
+Ans: Solidity is the programming language used to develop Ethereum Smart Contracts.
+Example
+contract Bank {
+function deposit() public {}
+function withdraw() public {}
+}
+QA generally tests the contract behavior rather than writing contracts.
+
+12. How do you test Smart Contracts?
+Ans: I validate:
+Business logic
+Input validation
+State changes
+Event generation
+Access control
+Gas consumption
+Failure handling
+
+Example: Deposit ₹1,000
+Expected
+Balance = ₹1,000
+Withdraw ₹500
+Expected
+Balance = ₹500
+Negative Test
+Withdraw ₹2,000
+Expected
+Transaction Reverted
+13. What are Events?
+Ans: Events are logs emitted by smart contracts after successful execution.
+
+Example: event Transfer(address from,address to,uint amount);
+QA verifies
+Event generated
+Correct sender
+Correct receiver
+Correct amount
+
+14. Contract Deployment
+Answer: Deployment means publishing a smart contract to the blockchain.
+Flow
+Write Contract
+↓
+Compile
+↓
+Deploy
+↓
+Receive Contract Address
+↓
+
+Ready to Use
+QA verifies
+
+Contract address
+ABI
+Deployment success
+15. State Variables
+Ans: State variables permanently store data on the blockchain.
+Example
+uint balance=100;
+QA verifies that values update correctly after transactions.
+
+16. What is Revert?
+Ans: Revert cancels the transaction if a condition fails.
+Example
+require(balance>=amount);
+If balance is insufficient
+Transaction
+Reverted
+No state changes occur.
+
+17. Gas Limit
+Ans: Maximum computational work allowed for a transaction.
+Too low
+Transaction Fails
+18. Gas Price
+Ans: Amount paid per unit of gas.
+Higher gas price
+Higher priority
+
+WALLET QUESTIONS
+19. How do you test MetaMask?
+Ans: 
+Test Cases
+Install extension
+Connect wallet
+Disconnect wallet
+Switch network
+Sign transaction
+Reject transaction
+Lock wallet
+Unlock wallet
+Example
+Click Connect Wallet
+Expected
+Wallet connected
+Wallet address displayed
+
+20. WalletConnect
+Ans: WalletConnect allows mobile wallets to connect securely using a QR code or deep link.
+
+QA verifies
+QR generation
+Successful pairing
+Transaction approval
+Disconnection
+
+21. Coinbase Wallet
+Ans: Coinbase Wallet is a non-custodial wallet that stores users' crypto assets and supports DApps.
+QA checks are similar to MetaMask.
+
+22. Wallet Authentication
+Ans: Authentication is performed using cryptographic signatures rather than passwords.
+Flow
+Connect Wallet
+↓
+Sign Message
+↓
+Verify Signature
+↓
+Login Successful
+
+QA verifies
+
+Valid signature accepted
+Invalid signature rejected
+Expired session handled
+
+23. Invalid Signature
+Ans: Occurs when the signature does not match the user's wallet.
+Expected
+Authentication Failed
+
+24. Wallet Disconnect
+Ans: Expected behavior
+User logged out
+Wallet address cleared
+Protected pages inaccessible
+======================================================================================
+DAPP QUESTIONS
+25. How do you test DApps?
+Ans:
+Test
+Wallet connection
+Smart contract interaction
+UI
+Blockchain transaction
+API
+Database
+Error handling
+Example
+Purchase NFT
+Click Buy
+↓
+Wallet Opens
+↓
+Approve
+↓
+Transaction Success
+↓
+
+NFT Ownership Updated
+26. Frontend to Blockchain Communication
+Flow
+React UI
+↓
+Web3.js
+↓
+MetaMask
+↓
+Ethereum Node
+↓
+Blockchain
+
+QA verifies
+Request sent
+Transaction hash generated
+Success message displayed
+=============================================================
+27. Token Transfer Validation
+Verify
+Sender balance
+Receiver balance
+Transaction hash
+Gas fee
+Block number
+
+28. NFT Purchase
+Verify
+NFT listed
+Payment completed
+Ownership transferred
+NFT removed from marketplace
+
+29. Staking
+Verify
+Stake amount
+Reward calculation
+Lock period
+Unstake functionality
+
+30. Governance Voting
+Verify
+Eligible wallet
+One vote per wallet
+Vote recorded
+Results updated
+===========================================================================================

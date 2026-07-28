@@ -1,0 +1,836 @@
+1. What is Regular Expression (Regex)?
+Answer:A Regular Expression (Regex) is a sequence of characters used to search, validate, 
+extract, or replace text based on a pattern.
+
+Examples:
+Validate email
+Validate phone number
+Find numbers in text
+Remove special characters
+Extract URLs
+
+Python module:
+import re
+
+2. Why do we use Regex?
+Answer: Regex is used for:
+Input validation
+Data extraction
+Search
+Replace
+Log analysis
+Automation Testing
+
+Example:
+Validate Email
+abc@gmail.com
+
+Find
+gmail.com
+
+3. What does "." mean in Regex?
+Answer: Dot matches any single character except newline.
+Example
+Pattern
+a.c
+Matches
+abc
+axc
+a1c
+
+Doesn't match
+ac
+abbc
+4. What does "*" mean?
+Answer: Zero or More occurrences
+
+Pattern
+ab*
+Matches
+
+a
+ab
+abb
+abbbb
+5. Difference between "*" and "+"?
+*	+
+Zero or More	One or More
+
+Example
+ab*
+
+Matches
+a
+ab
+abb
+
+But
+
+ab+
+
+Matches
+
+ab
+abb
+abbb
+
+Not
+a
+
+6. What does "?" mean?
+Zero or One occurrence
+
+Pattern
+colou?r
+
+Matches
+color
+colour
+7. What is "^"?
+Beginning of string
+Pattern
+^Hello
+
+Matches
+Hello World
+
+Not
+Say Hello
+8. What is "$"?
+End of string
+Pattern
+World$
+
+Matches
+Hello World
+
+9. Difference between ^ and $?
+^ → Start
+$ → End
+
+10. What does [] mean?
+Character class
+Pattern
+[abc]
+Matches
+a
+b
+c
+
+11. Difference between [] and ()?
+[] → Character Set
+
+() → Grouping
+
+Example
+(cat|dog)
+Matches
+cat
+dog
+12. What is \d ?
+Digit
+Equivalent
+[0-9]
+
+Example
+\d\d
+Matches
+12
+98
+13. What is \D ?
+Non-digit
+Matches
+ABC
+xyz
+@
+
+14. What is \w ?
+Word character
+Includes
+A-Z
+a-z
+0-9
+_
+
+15. What is \W ?
+Non-word character
+Matches
+@
+#
+$
+%
+16. What is \s ?
+Whitespace
+Matches
+Space
+Tab
+Newline
+
+17. What is \S ?
+Non-whitespace
+
+18. What is {n}?
+Exactly n occurrences
+Pattern
+\d{4}
+Matches
+2025
+
+19. What is {n,m}?
+Between n and m times
+
+Example
+\d{2,5}
+
+Matches
+12
+123
+12345
+
+20. What is "|"?
+OR operator
+
+Example
+cat|dog
+
+Matches
+cat
+dog
+
+21. How do you validate an Email?
+Regex: ^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$
+
+Matches
+abc@gmail.com
+john123@yahoo.in
+
+Python
+import re
+email="abc@gmail.com"
+pattern=r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
+print(bool(re.match(pattern,email)))
+
+22. Validate Mobile Number
+Regex
+^[6-9]\d{9}$
+
+Matches
+9876543210
+
+Not
+1234567890
+23. Validate PAN Card
+
+Regex
+^[A-Z]{5}[0-9]{4}[A-Z]$
+Matches
+ABCDE1234F
+
+24. Validate PIN Code
+Regex
+^\d{6}$
+Matches
+600001
+25. Find only Numbers
+Python
+import re
+text="Order123Price500"
+print(re.findall(r'\d+',text))
+
+Output: ['123','500']
+
+26. Find only Alphabets
+re.findall(r'[A-Za-z]+',text)
+Example
+Hello123World
+Output: ['Hello','World']
+27. Replace Spaces with "_"
+import re
+text="Robot Framework"
+print(re.sub(r"\s","_",text))
+
+Output: Robot_Framework
+
+28. Difference between re.match(), re.search(), and re.findall()
+Function	Description
+match()	Checks only at the beginning of the string
+search()	Finds the first occurrence anywhere
+findall()	Returns all matching occurrences
+
+Example
+text="Python Selenium"
+print(re.match("Selenium",text))
+Output
+None
+Example
+print(re.search("Selenium",text))
+Output
+Match Found
+29. Difference between Greedy and Non-Greedy Matching
+Greedy
+<.*>
+Matches
+<div>Hello</div>
+Result
+<div>Hello</div>
+Non-Greedy
+<.*?>
+Matches
+<div>
+
+30. Where is Regex used in Automation Testing?
+Regex is widely used to:
+
+Validate email, phone numbers, dates, ZIP/PIN codes
+Verify dynamic UI text in Selenium or Robot Framework
+Extract values from logs and reports
+Validate API responses
+Parse JSON or XML (where appropriate)
+Match dynamic URLs and IDs
+Validate file names and timestamps
+
+Example:
+
+assert re.match(r"^Order-\d+$", "Order-12345")
+Quick Regex Cheat Sheet
+Symbol	Meaning	Example
+.	Any character	a.c
+*	0 or more	ab*
++	1 or more	ab+
+?	0 or 1	colou?r
+^	Start of string	^Hello
+$	End of string	World$
+[]	Character class	[abc]
+()	Grouping	`(cat
+\d	Digit	[0-9]
+\D	Non-digit	[^0-9]
+\w	Word character	[A-Za-z0-9_]
+\W	Non-word character	Special characters
+\s	Whitespace	Space, tab, newline
+\S	Non-whitespace	Any visible character
+{n}	Exactly n times	\d{4}
+{n,m}	Between n and m times	\d{2,5}
+`	`	OR
+Interview Tips
+
+If you're interviewing for QA Automation, SDET, or Blockchain QA, be prepared to:
+
+Explain common regex symbols and quantifiers.
+Write regex patterns for emails, phone numbers, URLs, wallet addresses, and IDs.
+Use Python's re module (match, search, findall, sub).
+Explain the difference between greedy (.*) and non-greedy (.*?) matching.
+Solve small regex coding tasks during the interview.
+
+Mastering these patterns will cover the majority of regex questions typically asked in automation testing interviews.
+Let's take the two most common interview questions.
+
+1. Email Validation Regex
+
+Regex:
+
+^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$
+
+Suppose the interviewer asks:
+Can you explain this regex?
+You should explain it from left to right.
+Regex Part	Meaning
+^	Start of the string. Ensures matching begins at the first character.
+[A-Za-z0-9._%+-]	Allows uppercase letters, lowercase letters, digits, ., _, %, +, and - in the username.
++	One or more of the previous characters are required.
+@	The email must contain exactly one @ symbol.
+[A-Za-z0-9.-]	Allows letters, digits, dots, and hyphens in the domain name.
++	Domain must have at least one character.
+\.	Matches a literal dot (.). The backslash is needed because . normally means "any character".
+[A-Za-z]	Top-level domain should contain only letters.
+{2,}	At least 2 letters (e.g., com, org, in).
+$	End of the string. Prevents extra characters after the domain.
+Example 1
+john123@gmail.com
+
+Breakdown
+john123
+
+Matches
+[A-Za-z0-9._%+-]+
+
+Then
+@
+
+Matches
+@
+
+Then
+gmail
+
+Matches
+[A-Za-z0-9.-]+
+
+Then
+.
+
+Matches
+\.
+
+Then
+com
+
+Matches
+[A-Za-z]{2,}
+
+Whole string matches ✔
+
+Example 2
+john@@gmail.com
+
+Fails because there are two @ symbols.
+
+Example 3
+@gmail.com
+
+Fails because
+
+[A-Za-z0-9._%+-]+
+
+requires at least one character before the @.
+
+Example 4
+john@gmail
+
+Fails because there is no .com, .in, .org, etc.
+
+Interview Answer
+
+"The regex starts with ^, which marks the beginning of the string. The first character class allows letters, numbers, dots, underscores, percent signs, plus signs, and hyphens for the username, and + ensures at least one character is present. Then @ separates the username and domain. The next character class allows letters, numbers, dots, and hyphens for the domain name. \. matches the literal dot before the extension, and [A-Za-z]{2,} ensures the extension contains at least two alphabetic characters. Finally, $ ensures there are no extra characters after the extension."
+
+2. IPv4 Address Validation
+
+Regex
+
+^((25[0-5]|2[0-4][0-9]|1?[0-9]{1,2})\.){3}(25[0-5]|2[0-4][0-9]|1?[0-9]{1,2})$
+
+An IPv4 address has four numbers (octets), each between 0 and 255, separated by dots.
+
+Example
+
+192.168.1.100
+
+Think of it as
+
+192
+168
+1
+100
+
+Each part must be between 0 and 255.
+
+Breaking the regex
+^
+
+Start of string
+
+(
+
+Start a group.
+
+25[0-5]
+
+Matches
+
+250
+251
+252
+253
+254
+255
+
+Why?
+
+25
+
+is fixed.
+
+[0-5]
+
+allows only
+
+0
+1
+2
+3
+4
+5
+
+So
+
+256
+257
+259
+
+are rejected.
+
+Next
+
+2[0-4][0-9]
+
+Matches
+
+200
+201
+...
+249
+
+Why?
+
+2
+
+is fixed.
+
+[0-4]
+
+allows
+
+0
+1
+2
+3
+4
+
+The last digit
+
+[0-9]
+
+allows any digit.
+
+So it covers
+
+200–249
+
+Next
+
+1?[0-9]{1,2}
+
+This covers the remaining valid values:
+
+0–9
+10–99
+100–199
+
+Explanation:
+
+1? means the leading 1 is optional.
+[0-9]{1,2} means one or two digits.
+
+Together, this branch is intended to cover values up to 199.
+
+Then
+
+|
+
+means OR.
+
+So one octet can be:
+
+250-255
+OR
+200-249
+OR
+0-199
+
+Then
+
+\.
+
+Matches a literal dot.
+
+Then
+
+{3}
+
+Repeat the pattern (octet + dot) three times.
+
+That gives:
+
+192.
+168.
+1.
+
+Finally
+
+(25[0-5]|2[0-4][0-9]|1?[0-9]{1,2})
+
+Matches the last octet, but without a trailing dot.
+
+$
+
+End of string.
+
+Example
+192.168.1.100
+192 ✓
+.
+168 ✓
+.
+1 ✓
+.
+100 ✓
+
+Valid ✔
+
+Invalid Example
+192.168.300.1
+300
+
+does not match:
+
+25[0-5] ❌
+2[0-4][0-9] ❌
+1?[0-9]{1,2} ❌
+
+Therefore, the IP is invalid.
+
+Common Follow-up Interview Questions
+Q1. Why do we use \. instead of .?
+
+Answer: In regex, . means any single character. To match an actual dot (.), we escape it as \..
+
+Q2. Why do we use ^ and $?
+
+Answer: They anchor the match to the beginning and end of the string, ensuring the entire input matches the pattern rather than just a part of it.
+
+Q3. What is the difference between *, +, and ??
+Symbol	Meaning	Example
+*	Zero or more	ab* → a, ab, abb
++	One or more	ab+ → ab, abb
+?	Zero or one	colou?r → color, colour
+
+For QA Automation/SDET interviews, you should also practice explaining regex for:
+
+Email validation
+IPv4 address validation
+URL validation
+Phone number validation
+PAN card validation
+Aadhaar number validation
+Password validation
+Date validation (DD/MM/YYYY)
+MAC address validation
+Vehicle registration number validation
+
+These are among the most frequently discussed regex validation questions in automation interviews.
+
+Email validation
+IPv4 address validation
+URL validation
+Phone number validation
+PAN card validation
+Aadhaar number validation
+Password validation
+Date validation (DD/MM/YYYY)
+MAC address validation
+Vehicle registration number validation
+
+These are the 10 most commonly asked Regex validation questions in QA Automation, SDET, and Python interviews. The key to answering them is explaining each part of the pattern, not just writing the regex.
+
+1. Email Validation
+Regex
+^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$
+Breakdown
+Part	Meaning
+^	Start of the string
+[A-Za-z0-9._%+-]+	Username: letters, digits, ., _, %, +, - (one or more)
+@	Mandatory separator between username and domain
+[A-Za-z0-9.-]+	Domain name (letters, digits, dots, hyphens)
+\.	Literal dot before extension
+[A-Za-z]{2,}	Domain extension with at least 2 letters (com, org, in)
+$	End of the string
+Valid
+john@gmail.com
+abc_123@yahoo.in
+Invalid
+@gmail.com
+john@@gmail.com
+john@gmail
+Interview Explanation
+
+This regex validates an email by checking for a valid username, exactly one @, a valid domain, a literal dot, and a domain extension of at least two letters.
+
+2. IPv4 Address Validation
+Regex
+^((25[0-5]|2[0-4][0-9]|1?[0-9]{1,2})\.){3}(25[0-5]|2[0-4][0-9]|1?[0-9]{1,2})$
+Breakdown
+Part	Meaning
+25[0-5]	250–255
+2[0-4][0-9]	200–249
+1?[0-9]{1,2}	0–199
+`	`
+\.	Literal dot
+{3}	Repeat first three octets
+Last group	Fourth octet
+^...$	Entire string must match
+Valid
+192.168.1.1
+255.255.255.255
+10.0.0.1
+Invalid
+256.10.20.30
+192.168.1
+192.168.1.300
+Interview Explanation
+
+An IPv4 address has four octets separated by dots. Each octet must be between 0 and 255, and the regex enforces that range.
+
+3. URL Validation
+Regex
+^(https?:\/\/)?(www\.)?[A-Za-z0-9-]+\.[A-Za-z]{2,}(\/.*)?$
+Breakdown
+Part	Meaning
+https?	http or https
+:\/\/	://
+?	Protocol is optional
+(www\.)?	Optional www.
+[A-Za-z0-9-]+	Domain name
+\.	Dot
+[A-Za-z]{2,}	Domain extension
+(\/.*)?	Optional path
+Valid
+https://google.com
+http://abc.org
+www.test.com
+Invalid
+http:/google.com
+google
+https://
+Interview Explanation
+
+The regex supports optional protocol, optional www, a valid domain, an extension, and an optional path.
+
+4. Phone Number Validation (India)
+Regex
+^[6-9]\d{9}$
+Breakdown
+Part	Meaning
+[6-9]	First digit must be 6–9
+\d{9}	Followed by exactly 9 digits
+^...$	Exactly 10 digits
+Valid
+9876543210
+9123456789
+Invalid
+1234567890
+987654321
+Interview Explanation
+
+Indian mobile numbers contain exactly 10 digits and begin with digits 6–9.
+
+5. PAN Card Validation
+Regex
+^[A-Z]{5}[0-9]{4}[A-Z]$
+Breakdown
+Part	Meaning
+[A-Z]{5}	First 5 uppercase letters
+[0-9]{4}	Next 4 digits
+[A-Z]	Last uppercase letter
+Valid
+ABCDE1234F
+Invalid
+abcde1234F
+AB12345FG
+Interview Explanation
+
+A PAN number consists of five uppercase letters, four digits, and one uppercase letter.
+
+6. Aadhaar Number Validation
+Regex
+^\d{12}$
+Breakdown
+Part	Meaning
+\d{12}	Exactly 12 digits
+^...$	Entire string must be 12 digits
+Valid
+123456789012
+Invalid
+12345678901
+1234AB567890
+Interview Explanation
+
+This regex checks only the format (12 digits). It does not verify whether the Aadhaar number is genuine.
+
+7. Password Validation
+Regex
+^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$
+Breakdown
+Part	Meaning
+(?=.*[a-z])	At least one lowercase letter
+(?=.*[A-Z])	At least one uppercase letter
+(?=.*\d)	At least one digit
+(?=.*[@$!%*?&])	At least one special character
+.{8,}	Minimum length of 8 characters
+Valid
+Hello@123
+Pass#2025
+Invalid
+hello123
+HELLO123
+Hello123
+Interview Explanation
+
+Lookaheads ((?=...)) ensure the password contains each required character type without consuming characters.
+
+8. Date Validation (DD/MM/YYYY)
+Regex
+^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$
+Breakdown
+Part	Meaning
+0[1-9]	Days 01–09
+[12][0-9]	Days 10–29
+3[01]	Days 30–31
+/	Separator
+0[1-9]	Months 01–09
+1[0-2]	Months 10–12
+\d{4}	Four-digit year
+Valid
+25/12/2025
+01/01/2026
+Invalid
+32/12/2025
+15/13/2025
+
+Note: This validates the format only. It won't reject dates like 31/02/2025; additional logic is needed for calendar validation.
+
+9. MAC Address Validation
+Regex
+^([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}$
+Breakdown
+Part	Meaning
+[0-9A-Fa-f]{2}	Two hexadecimal characters
+:	Colon separator
+{5}	Repeat first five pairs
+Final pair	Last hexadecimal pair
+Valid
+00:1A:2B:3C:4D:5E
+AA:BB:CC:DD:EE:FF
+Invalid
+00:1A:2B:3C
+GG:11:22:33:44:55
+Interview Explanation
+
+A MAC address has six pairs of hexadecimal digits separated by colons.
+
+10. Vehicle Registration Number (India)
+Regex
+^[A-Z]{2}[0-9]{2}[A-Z]{1,2}[0-9]{4}$
+Breakdown
+Part	Meaning
+[A-Z]{2}	State code (e.g., TN, KA, MH)
+[0-9]{2}	RTO code
+[A-Z]{1,2}	Series (one or two letters)
+[0-9]{4}	Vehicle number
+Valid
+TN10AB1234
+KA01A1234
+MH12DE5678
+Invalid
+TN123AB1234
+TN10ABC123
+Interview Explanation
+The regex matches the common Indian vehicle registration format: state code, RTO code, series, and four-digit vehicle number.

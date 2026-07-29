@@ -110,3 +110,107 @@ rev=" "
 for char in str9:
     rev = char + rev
 print(rev)              #gnimmargorp nohtyp olleH
+
+#reverse the string
+name="Prathyusha"
+print(name)
+print(name[::-1])
+print(' '.join(reversed(name)))
+
+rever=" "
+for chara in name:
+    rever = chara + rever
+print(rever)
+
+#palindroma
+words="madam"
+if words==words[::-1]:
+    print("Palindrome")
+else:
+    print("Not Palindrome")
+
+word="Automation"
+vowels="aeiou"
+count =0
+
+for char in word:
+    if char in vowels:
+        count+=1
+print(f"total number of vowels:{count}")
+
+character=input("enter the characters:")
+upper=0
+lower=0
+for char in character:
+    if char.isupper():
+        upper+=1
+    elif char.islower():
+        lower+=1
+
+print("Upper:", upper)
+print("Lower:", lower)
+
+#Count Digits
+text=input("enter the text:")
+count=0
+for ch in text:
+    if ch.isdigit():
+        count+=1
+print(count) 
+
+#count character
+text="Automation"
+freq={}
+for char in text:
+    freq[char]= freq.get(char,0)+1
+print(freq)
+
+# Mini Automation Task
+response="Login Successful"
+
+if "Successful" in response:
+    print("Test passed")
+else:
+    print("Test is failed")
+
+#write the length of the string without using len()
+name="prathyusha"
+print(len(name))
+
+count=0
+for char in name:
+    count+=1
+print(count)
+
+# 2. Count Words in a Sentence
+sentence = input("Enter a sentence: ")
+words = sentence.split()
+print("Number of words:", len(words))
+
+# without split()
+sentence = input("Enter a sentence: ")
+count = 1
+for ch in sentence:
+    if ch == " ":
+        count += 1
+print("Number of words:", count)
+
+#count the vowels and consta
+sentence = input("Enter a sentence: ")
+vowels=0
+consta=0
+for char in sentence:
+    if char.isalpha():
+        if char in "aeiou":
+            vowels+=1
+        else:
+            consta+=1
+print(vowels)
+print(consta)
+
+text="prathyusha"
+dups=[]
+for char in text:
+    if text.count(char)>1 and char not in dups:
+        dups.append(char)
+print(dups)

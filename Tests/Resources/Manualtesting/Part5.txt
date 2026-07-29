@@ -1,0 +1,263 @@
+1. Write Test Scenarios for a Login Page
+Test Scenarios
+Verify login with valid credentials.
+Verify login with an invalid username.
+Verify login with an invalid password.
+Verify login with both invalid username and password.
+Verify login with blank username.
+Verify login with blank password.
+Verify login with both fields blank.
+Verify password masking.
+Verify "Forgot Password" link.
+Verify "Remember Me" functionality.
+Verify account lock after multiple failed attempts.
+Verify session timeout.
+Verify logout functionality.
+Verify SQL Injection protection.
+Verify XSS protection.
+Sample Test Case
+Test Case ID	TC_Login_001
+Scenario	Login with valid credentials
+Steps	Enter username → Enter password → Click Login
+Expected Result	User should navigate to Dashboard
+2. Write Test Cases for an ATM
+Test Scenarios
+Insert a valid card.
+Insert an invalid card.
+Enter the correct PIN.
+Enter an incorrect PIN.
+Lock account after 3 incorrect PIN attempts.
+Withdraw cash within the balance.
+Withdraw more than the available balance.
+Withdraw more than the daily limit.
+Deposit cash.
+Check balance.
+Print mini statement.
+Cancel transaction.
+Eject card after transaction.
+Session timeout after inactivity.
+3. Write Test Cases for an Elevator
+Test Scenarios
+Verify elevator moves up.
+Verify elevator moves down.
+Verify all floor buttons work.
+Verify door opens at selected floor.
+Verify door closes automatically.
+Verify emergency button.
+Verify overload warning.
+Verify door obstruction sensor.
+Verify power failure behavior.
+Verify alarm button.
+Verify floor indicator.
+Verify lift does not move when overloaded.
+4. How Would You Test a Calculator?
+Test Scenarios
+Addition
+Subtraction
+Multiplication
+Division
+Divide by zero
+Decimal calculations
+Large numbers
+Negative numbers
+Continuous calculations
+Clear button
+Backspace
+Memory functions
+Keyboard input
+Button responsiveness
+5. How Would You Test a Search Box?
+Test Scenarios
+Search with a valid keyword.
+Search with an invalid keyword.
+Search with partial text.
+Search with numbers.
+Search with special characters.
+Search with spaces only.
+Search with empty input.
+Search with maximum-length input.
+Verify auto-suggestions.
+Verify search filters.
+Verify sorting.
+Verify search history.
+6. Write Test Cases for a Registration Page
+Test Scenarios
+Register with valid details.
+Mandatory field validation.
+Email validation.
+Phone number validation.
+Password strength validation.
+Confirm password validation.
+Duplicate email registration.
+Date picker validation.
+Terms and Conditions checkbox.
+CAPTCHA validation.
+Successful registration confirmation.
+7. How Would You Test an E-Commerce Checkout Process?
+Test Scenarios
+Cart
+Add product.
+Remove product.
+Update quantity.
+Verify price calculation.
+Address
+Add new address.
+Edit address.
+Delete address.
+Payment
+Credit Card
+Debit Card
+UPI
+Wallet
+Net Banking
+Cash on Delivery
+Order
+Order confirmation
+Invoice generation
+Email notification
+SMS notification
+Order history update
+8. How Would You Test a Payment Gateway?
+Test Scenarios
+Successful payment.
+Failed payment.
+Cancel payment.
+Timeout.
+Invalid card.
+Expired card.
+Incorrect CVV.
+Insufficient balance.
+OTP verification.
+Duplicate payment prevention.
+Refund.
+Payment receipt generation.
+9. How Would You Test a Banking Application?
+Test Scenarios
+Login
+Valid login.
+Invalid login.
+MFA/OTP verification.
+Accounts
+Balance inquiry.
+Mini statement.
+Transaction history.
+Transfer
+Same bank transfer.
+Other bank transfer.
+Invalid account number.
+Insufficient balance.
+Daily transfer limit.
+Beneficiary management.
+Security
+Session timeout.
+Password expiry.
+Unauthorized access.
+Encryption.
+Audit logs.
+10. How Would You Test a Mobile Application?
+Functional Testing
+Login
+Registration
+Push notifications
+Camera
+GPS
+Contacts
+File upload
+Device Testing
+Android
+iPhone
+Tablet
+Compatibility
+Different screen sizes
+Portrait/Landscape
+OS versions
+Network
+Wi-Fi
+4G/5G
+Airplane mode
+Network switching
+Interruptions
+Incoming calls
+SMS
+Low battery
+App minimization
+Background execution
+Scenario-Based Questions Asked in Interviews
+Q1. How would you test Google Search?
+
+Answer:
+
+Search valid keywords.
+Search invalid keywords.
+Search with special characters.
+Verify auto-suggestions.
+Verify filters (Images, Videos, News).
+Verify pagination.
+Verify search speed.
+Verify spelling suggestions.
+Q2. How would you test a Lift?
+
+Answer:
+
+Button functionality.
+Door sensor.
+Emergency alarm.
+Weight limit.
+Floor indication.
+Power recovery.
+Fire mode.
+Q3. How would you test WhatsApp?
+
+Answer:
+
+User registration.
+OTP verification.
+Send/receive messages.
+Images, videos, and documents.
+Voice and video calls.
+Group chat.
+Status updates.
+Notifications.
+Message delivery/read receipts.
+Offline message synchronization.
+Q4. How would you test an Online Flight Booking System?
+
+Answer:
+
+Search flights.
+One-way and round-trip bookings.
+Passenger details.
+Seat selection.
+Fare calculation.
+Payment processing.
+Ticket generation.
+Email/SMS confirmation.
+Cancellation.
+Refund processing.
+Q5. How would you test a Railway Reservation System?
+
+Answer:
+
+User registration and login.
+Train search.
+Seat availability.
+Booking tickets.
+Waitlist and RAC handling.
+Payment.
+Ticket cancellation.
+Refund processing.
+PNR status.
+SMS and email notifications.
+Tips for Scenario-Based Questions
+
+When answering in an interview, structure your response like this:
+
+Understand the requirement – Clarify the feature and business rules.
+Identify positive scenarios – Expected successful flows.
+Identify negative scenarios – Invalid inputs and error conditions.
+Consider boundary conditions – Minimum, maximum, and edge values.
+Think about security – Authentication, authorization, input validation.
+Check usability and compatibility – Different browsers, devices, and accessibility.
+Include performance if relevant – Response time and concurrency.
+
+This structured approach demonstrates that you think like an experienced QA engineer rather than simply listing test cases.

@@ -1,0 +1,215 @@
+Part 2: Defect Management Interview Questions (with answers and examples).
+1. What is a Defect?
+Answer
+A defect (bug) is a flaw or issue in the software where the actual behavior differs from the expected behavior specified in the requirements.
+Formula:
+Expected Result ≠ Actual Result = Defect
+Example
+Requirement: User should be able to log in with valid credentials.
+Expected Result: Dashboard is displayed.
+Actual Result: Application crashes.
+Conclusion: This is a defect.
+
+2. What is the Difference Between Error, Defect, Bug, and Failure?
+Term	Meaning	Who Causes It?	Example
+Error	A human mistake during development or design	Developer, Tester, Analyst	Developer writes the wrong formula
+Defect	A flaw in the software due to an error	Found by QA	Login button doesn't work
+Bug	Another name for a defect	Reported by QA	Incorrect total amount displayed
+Failure	The software fails during execution because of a defect	End User/System	Application crashes after clicking Submit
+Example
+Developer writes:
+Total = Price - Quantity
+Correct logic should be:
+Total = Price * Quantity
+Wrong logic → Error
+Wrong code in the application → Defect/Bug
+Incorrect bill shown to the customer → Failure
+3. What is Severity?
+Answer
+Severity indicates how serious the defect is from a technical or functional perspective.
+It is usually decided by the tester.
+Severity Levels
+Critical
+High
+Medium
+Low
+Example
+Application crashes after login
+
+Severity → Critical
+4. What is Priority?
+Answer
+Priority indicates how quickly the defect should be fixed based on business impact.
+It is usually decided by the Project Manager, Product Owner, or Business Team.
+Priority Levels
+High
+Medium
+Low
+Example
+Company logo is incorrect on the home page before a product launch.
+Severity → Low
+Priority → High (because customers will see it immediately)
+
+5. Difference Between Severity and Priority
+Severity	Priority
+Impact on system functionality	Urgency to fix
+Decided by QA	Decided by Business/PM
+Technical impact	Business impact
+Example 1
+Login not working
+Severity: High
+Priority: High
+Example 2
+Typo in the Privacy Policy
+Severity: Low
+Priority: Low
+Example 3
+Company name misspelled on the homepage before launch
+Severity: Low
+Priority: High
+
+6. Explain the Defect Life Cycle
+Stages
+New
+Assigned
+Open
+Fixed
+Retest
+Closed
+
+Other possible statuses:
+
+Reopened
+Deferred
+Duplicate
+Rejected
+Cannot Reproduce
+Example
+Tester finds login issue.
+Logs a defect (New).
+Manager assigns it to a developer (Assigned).
+Developer investigates (Open).
+Developer fixes the issue (Fixed).
+Tester verifies the fix (Retest).
+Issue works correctly (Closed).
+If it still fails after the fix:
+Status → Reopened
+7. What Information Do You Include in a Bug Report?
+A good bug report should contain:
+
+Bug ID
+Bug Title
+Module Name
+Environment (QA/UAT/Production)
+Build Version
+Preconditions
+Steps to Reproduce
+Expected Result
+Actual Result
+Severity
+Priority
+Screenshots or Videos
+Logs (if available)
+Reporter Name
+Date
+
+Example
+Bug ID: BUG-101
+Title: Login button is not responding.
+Module: Authentication
+Environment: QA
+Steps:
+Open the application.
+Enter valid credentials.
+Click Login.
+
+Expected Result:
+Dashboard should open.
+
+Actual Result:
+Nothing happens after clicking Login.
+
+Severity: High
+Priority: High
+
+8. What is Defect Leakage?
+Answer
+Defect Leakage occurs when a defect is not found during testing and is discovered by the customer or in production.
+
+Example
+A payment issue was missed during QA testing.
+
+Customers report failed payments after the application goes live.
+This is Defect Leakage.
+
+How to Reduce It
+Improve test coverage.
+Perform regression testing.
+Conduct exploratory testing.
+Review test cases thoroughly.
+9. What is Defect Removal Efficiency (DRE)?
+Answer
+Defect Removal Efficiency (DRE) measures how effectively defects are found and fixed before release.
+
+Formula
+DRE = (Defects found before release / Total defects) × 100
+
+Example
+Defects found during testing = 95
+Defects found after release = 5
+
+Total defects = 100
+DRE = (95 / 100) × 100 = 95%
+A higher DRE indicates a more effective testing process.
+
+10. What is Root Cause Analysis (RCA)?
+Answer
+Root Cause Analysis (RCA) is the process of identifying the underlying reason why a defect occurred, so that similar defects can be prevented in the future.
+Common Root Causes
+Requirement misunderstanding
+Coding mistake
+Missing test case
+Environment issue
+Incorrect configuration
+Inadequate code review
+Example
+Problem: Users receive duplicate order confirmation emails.
+
+Investigation:
+QA verifies the issue.
+Developers analyze the code.
+They discover the email service is triggered twice due to incorrect event handling.
+Root Cause: Duplicate event trigger in the application logic.
+Corrective Action: Fix the event handling and add a regression test to prevent recurrence.
+
+Frequently Asked Defect Management Interview Questions
+Q1. Who decides Severity and Priority?
+Answer:
+Severity → Tester/QA
+Priority → Product Owner, Project Manager, or Business Team
+Q2. Can Severity be Low and Priority be High?
+Answer:
+Yes.
+Example: Company logo or promotional banner is incorrect on the home page before an important product launch.
+Severity: Low (doesn't affect functionality)
+Priority: High (high business visibility)
+
+Q3. Can Severity be High and Priority be Low?
+Answer:
+Yes, although it's less common.
+
+Example: A crash occurs in a rarely used admin feature that is not part of the current release scope.
+Severity: High
+Priority: Low
+Q4. What if a developer rejects your bug?
+Answer:
+I first verify that the issue is reproducible and compare it with the documented requirements. I then discuss the issue with the developer, sharing clear evidence such as steps to reproduce, screenshots, logs, or videos. If there's still disagreement, I involve the Business Analyst or Product Owner to clarify the expected behavior and reach a resolution.
+
+Q5. How do you ensure a bug report is useful?
+Answer:
+A good bug report should be:
+Clear and concise
+Easily reproducible
+Supported with screenshots or logs
+Accurate in severity and priority
+Written with enough detail for the developer to investigate without needing additional clarification

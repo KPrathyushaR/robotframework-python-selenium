@@ -1,0 +1,353 @@
+1. Selenium Interview Questions & Answers
+Q1. What is Selenium?
+
+Answer:
+Selenium is an open-source automation tool used to automate web applications.
+
+Example:
+
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+driver.get("https://google.com")
+Q2. Components of Selenium?
+Selenium IDE
+Selenium WebDriver
+Selenium Grid
+Q3. Difference between Selenium RC and WebDriver?
+Selenium RC	WebDriver
+Uses Server	Direct Browser Communication
+Slow	Fast
+Deprecated	Current Tool
+Q4. Difference between findElement and findElements?
+driver.find_element(By.ID,"user")
+
+Returns single element.
+
+driver.find_elements(By.TAG_NAME,"a")
+
+Returns list of elements.
+
+Q5. Types of Waits?
+Implicit Wait
+driver.implicitly_wait(10)
+Explicit Wait
+WebDriverWait(driver,10).until(
+EC.visibility_of_element_located((By.ID,"user"))
+)
+Fluent Wait
+
+Custom polling interval.
+
+Q6. How to handle dropdown?
+from selenium.webdriver.support.select import Select
+
+dropdown = Select(driver.find_element(By.ID,"country"))
+dropdown.select_by_visible_text("India")
+Q7. How to handle alerts?
+alert = driver.switch_to.alert
+alert.accept()
+Q8. How to switch window?
+driver.switch_to.window(driver.window_handles[1])
+Q9. How to handle frames?
+driver.switch_to.frame("frame1")
+Q10. Common Locators?
+ID
+Name
+Class Name
+Tag Name
+Link Text
+Partial Link Text
+XPath
+CSS Selector
+2. Robot Framework Interview Questions & Answers
+Q1. What is Robot Framework?
+
+Open-source keyword-driven automation framework.
+
+Example:
+
+*** Test Cases ***
+Open Google
+    Open Browser    https://google.com    chrome
+Q2. Sections in Robot Framework?
+*** Settings ***
+*** Variables ***
+*** Test Cases ***
+*** Keywords ***
+Q3. Difference between Library and Resource?
+Library
+
+Imports external libraries.
+
+Library    SeleniumLibrary
+Resource
+
+Imports custom keywords.
+
+Resource    CommonKeywords.robot
+Q4. How to create custom keyword?
+*** Keywords ***
+Login To Application
+    Input Text    id:user    admin
+    Input Text    id:pass    admin123
+Q5. How to execute Robot tests?
+robot Login.robot
+Q6. How to run specific test case?
+robot -t "Login Test" Login.robot
+Q7. Reports generated?
+log.html
+report.html
+output.xml
+Q8. How to pass variables?
+robot --variable URL:https://google.com test.robot
+3. API Testing Interview Questions & Answers
+Q1. What is API?
+
+Application Programming Interface allows communication between applications.
+
+Q2. Difference between SOAP and REST?
+SOAP	REST
+XML	JSON
+Heavy	Lightweight
+More Secure	Faster
+Q3. Common HTTP Methods?
+GET
+
+Retrieve data
+
+POST
+
+Create data
+
+PUT
+
+Update complete record
+
+PATCH
+
+Partial update
+
+DELETE
+
+Delete record
+
+Q4. What is Status Code?
+200
+
+Success
+
+201
+
+Created
+
+400
+
+Bad Request
+
+401
+
+Unauthorized
+
+403
+
+Forbidden
+
+404
+
+Not Found
+
+500
+
+Server Error
+
+Q5. What is Authentication?
+
+Verifies user identity.
+
+Examples:
+
+Basic Auth
+Bearer Token
+OAuth
+Q6. API Validation?
+
+Validate:
+
+Response Code
+Response Time
+Response Body
+Headers
+Schema
+Q7. Example Postman Test
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+4. Git Interview Questions & Answers
+Q1. What is Git?
+
+Distributed Version Control System.
+
+Q2. Difference between Git and GitHub?
+Git	GitHub
+Tool	Hosting Platform
+Local	Cloud
+Q3. Common Git Commands?
+Clone
+git clone url
+Status
+git status
+Add
+git add .
+Commit
+git commit -m "Added Login Tests"
+Push
+git push origin main
+Pull
+git pull origin main
+Q4. What is Branch?
+
+Independent development line.
+
+git checkout -b feature-login
+Q5. What is Merge?
+
+Combines branches.
+
+git merge feature-login
+5. Jenkins Interview Questions & Answers
+Q1. What is Jenkins?
+
+Open-source CI/CD tool.
+
+Used for:
+
+Build
+Test
+Deploy
+Q2. CI/CD Meaning?
+CI
+
+Continuous Integration
+
+CD
+
+Continuous Delivery/Deployment
+
+Q3. Jenkins Workflow?
+
+Developer Commit Code
+↓
+GitHub
+↓
+Jenkins Trigger
+↓
+Execute Automation Tests
+↓
+Generate Report
+↓
+Notify Team
+
+Q4. What is Pipeline?
+
+Automated workflow.
+
+Example:
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Build'){
+            steps{
+                echo 'Building'
+            }
+        }
+    }
+}
+Q5. How do you run Robot Framework in Jenkins?
+robot Tests/
+
+Publish:
+
+log.html
+report.html
+6. Agile Interview Questions & Answers
+Q1. What is Agile?
+
+Iterative software development methodology.
+
+Q2. What is Scrum?
+
+Popular Agile framework.
+
+Q3. Scrum Roles?
+Product Owner
+
+Manages requirements.
+
+Scrum Master
+
+Facilitates Scrum process.
+
+Development Team
+
+Develops product.
+
+Q4. What is Sprint?
+
+Fixed development cycle.
+
+Usually:
+
+2 weeks
+3 weeks
+4 weeks
+Q5. What is Daily Scrum?
+
+15-minute daily meeting.
+
+Discuss:
+
+What did I do yesterday?
+What will I do today?
+Any blockers?
+Q6. What is User Story?
+
+Requirement from user perspective.
+
+Example:
+
+As a customer, I want to login so that I can access my account.
+
+Q7. What is Definition of Done?
+
+Criteria that must be completed before story closure.
+
+Example:
+
+Development completed
+Testing completed
+Code reviewed
+No critical defects
+Top 20 Questions Frequently Asked in SDET Interviews
+Explain your automation framework architecture.
+Why Robot Framework?
+Difference between XPath and CSS Selector?
+How do you handle dynamic elements?
+What is Page Object Model?
+Explain explicit wait.
+How do you perform API testing?
+What validations do you perform in APIs?
+Difference between PUT and PATCH?
+Explain REST architecture.
+Explain Git branching strategy.
+What is merge conflict?
+Jenkins pipeline stages?
+CI/CD process?
+Explain Agile ceremonies.
+What is Sprint Retrospective?
+How do you prioritize defects?
+Difference between Smoke and Regression testing?
+What challenges did you face in automation?
+Walk me through your current project.

@@ -1,0 +1,174 @@
+Part 4: Test Design Techniques. These questions are commonly asked in manual testing interviews, especially for candidates with 3–8 years of experience.
+
+1. What is Boundary Value Analysis (BVA)?
+Answer
+Boundary Value Analysis (BVA) is a test design technique used to test the values at the boundaries (minimum and maximum limits) because defects are more likely to occur at these edges.
+
+Formula
+Test:
+Minimum value
+Minimum + 1
+Maximum - 1
+Maximum value
+Just outside the boundaries
+Example
+
+Requirement:
+Age should be between 18 and 60.
+
+Test Data	Expected Result
+17	Invalid
+18	Valid
+19	Valid
+59	Valid
+60	Valid
+61	Invalid
+
+Interview Tip:
+Most defects occur at boundary values, so BVA focuses on testing around those limits.
+
+2. What is Equivalence Partitioning (EP)?
+Answer
+Equivalence Partitioning divides input data into valid and invalid groups (partitions). Instead of testing every value, you test one representative value from each partition.
+
+Example
+Requirement:
+Marks should be between 1 and 100.
+
+Partitions:
+Invalid: Less than 1
+Valid: 1–100
+Invalid: Greater than 100
+Test Data	Expected Result
+-5	Invalid
+50	Valid
+150	Invalid
+
+Instead of testing all 100 values, test one value from each partition.
+3. Difference Between BVA and EP
+Boundary Value Analysis	Equivalence Partitioning
+Tests boundary values	Tests representative values from groups
+Focuses on edges	Focuses on partitions
+Example: 18, 19, 59, 60	Example: -1, 50, 150
+
+4. What is Decision Table Testing?
+Answer
+Decision Table Testing is used when the application's behavior depends on multiple conditions and combinations.
+It represents conditions and their corresponding actions in a table.
+
+Example
+ATM Withdrawal
+
+Card Valid	PIN Correct	Result
+Yes	Yes	Allow withdrawal
+Yes	No	Show "Invalid PIN"
+No	Yes	Reject card
+No	No	Reject card
+
+Decision tables ensure all combinations are tested.
+
+5. What is State Transition Testing?
+Answer
+State Transition Testing verifies how the application behaves when it moves from one state to another.
+Example
+
+ATM PIN Entry
+States:
+
+Card Inserted
+PIN Entered
+PIN Verified
+Account Locked
+
+Scenario:
+Correct PIN → Access Granted
+Wrong PIN 3 times → Account Locked
+This tests whether the application transitions correctly between states.
+
+6. What is Use Case Testing?
+Answer
+Use Case Testing validates complete business workflows from the user's perspective.
+
+Example
+Online Shopping
+
+Login
+Search Product
+Add to Cart
+Checkout
+Payment
+Order Confirmation
+
+The entire user journey is tested.
+7. What is Pairwise Testing?
+Answer
+Pairwise Testing reduces the number of test cases by ensuring that every possible pair of input values is tested at least once.
+It is useful when there are many combinations of inputs.
+
+Example
+Suppose an application supports:
+Browser: Chrome, Firefox, Edge
+OS: Windows, Linux
+Language: English, French
+Instead of testing every combination, pairwise testing selects a smaller set that still covers every pair of values.
+Benefit: Saves time while maintaining good test coverage.
+
+8. What is Error Guessing?
+Answer
+Error Guessing is an experience-based testing technique where testers use their knowledge and intuition to identify likely defect areas.
+
+There are no formal rules.
+Example
+While testing a Login page, an experienced tester may try:
+Leaving all fields blank
+Entering only spaces
+Using very long usernames
+Copy-pasting special characters
+Clicking Login multiple times quickly
+Disconnecting the internet during login
+
+These tests often reveal defects not covered by scripted test cases.
+
+Interview Questions and Answers
+Q1. Which test design technique is used for numeric ranges?
+
+Answer:
+Boundary Value Analysis (BVA) and Equivalence Partitioning (EP).
+
+Q2. Which technique reduces the number of test cases?
+
+Answer:
+Equivalence Partitioning and Pairwise Testing reduce the number of test cases while maintaining effective coverage.
+
+Q3. Which technique depends on tester experience?
+
+Answer:
+Error Guessing.
+
+Q4. Which technique is suitable for business rules?
+
+Answer:
+Decision Table Testing.
+
+Q5. Which technique is best for workflows?
+
+Answer:
+Use Case Testing.
+
+Interview Scenario
+
+Interviewer: A field accepts values from 1 to 100. Which test design techniques would you use?
+
+Good Answer:
+
+I would use both Boundary Value Analysis and Equivalence Partitioning. For BVA, I would test the boundary values such as 0, 1, 2, 99, 100, and 101. For Equivalence Partitioning, I would divide the input into three partitions: values less than 1 (invalid), values from 1 to 100 (valid), and values greater than 100 (invalid), then select one representative value from each partition.
+
+Quick Revision Table
+Technique	Best Used For	Example
+Boundary Value Analysis	Testing limits	Age 18–60
+Equivalence Partitioning	Grouping inputs	Marks 1–100
+Decision Table	Multiple conditions	ATM withdrawal
+State Transition	State changes	ATM PIN lock
+Use Case Testing	End-to-end workflows	Online shopping
+Pairwise Testing	Many input combinations	Browser × OS × Language
+Error Guessing	Experience-based testing	Blank fields, special characters

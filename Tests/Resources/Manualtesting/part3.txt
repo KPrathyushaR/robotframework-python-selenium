@@ -1,0 +1,226 @@
+Part 3: Types of Testing.
+1. What is Functional Testing?
+Answer: Functional Testing is the process of verifying whether the application functions according to the business requirements.
+It focuses on what the system does.
+Example
+For an E-commerce application:
+
+User Login
+Product Search
+Add to Cart
+Checkout
+Payment
+
+If all these features work correctly, functional testing passes.
+Interview Tip:
+Functional testing validates the application's business functionality without considering internal code.
+
+2. What is Non-Functional Testing?
+Answer
+Non-functional testing verifies how well the application performs rather than what it does.
+
+Types
+Performance Testing
+Load Testing
+Stress Testing
+Security Testing
+Usability Testing
+Compatibility Testing
+Reliability Testing
+Example
+
+Requirement:
+Website should support 10,000 concurrent users.
+Testing this requirement is non-functional testing.
+
+3. Difference Between Functional and Non-Functional Testing
+Functional Testing	Non-Functional Testing
+Tests business functionality	Tests performance and quality attributes
+Checks what the system does	Checks how well it performs
+Example: Login	Example: Login response time
+4. What is Smoke Testing?
+Answer
+Smoke Testing is a quick check to verify that the critical functionalities of a new build work correctly.
+If smoke testing fails, further testing is usually stopped.
+
+Example
+After receiving a new build, verify:
+Application launches
+Login works
+Dashboard opens
+Database connection works
+
+If login itself fails, reject the build.
+5. What is Sanity Testing?
+Answer
+Sanity Testing is performed after a bug fix or a minor code change to ensure the affected functionality works correctly.
+It is narrow and focused.
+
+Example
+Developer fixes the "Forgot Password" feature.
+
+QA tests:
+Forgot Password
+OTP
+Password Reset
+No need to test the entire application.
+
+6. Difference Between Smoke Testing and Sanity Testing
+Smoke Testing	Sanity Testing
+Performed on a new build	Performed after bug fixes
+Covers major functionalities	Covers specific functionality
+Broad testing	Narrow testing
+Ensures build stability	Ensures fix correctness
+7. What is Regression Testing?
+Answer
+Regression Testing verifies that existing functionalities continue to work after code changes, bug fixes, or new features.
+
+Example
+A new Payment feature is added.
+Regression testing includes checking:
+Login
+Search
+Cart
+Orders
+Profile
+Payment
+This ensures existing features are not broken.
+
+8. What is Retesting?
+Answer
+Retesting means testing the same defect again after the developer fixes it.
+Example
+Bug:
+Login button not working.
+Developer fixes it.
+
+QA tests the same login functionality again.
+9. Difference Between Regression Testing and Retesting
+Regression Testing	Retesting
+Checks existing features after changes	Verifies a specific bug fix
+Covers multiple modules	Covers one defect
+Often automated	Usually manual
+Performed after code changes	Performed after a defect is fixed
+10. What is Integration Testing?
+Answer
+Integration Testing verifies that different modules work correctly when combined.
+Example
+Modules:
+Login
+Cart
+Payment
+
+Flow:
+Login → Add to Cart → Payment
+
+If all modules interact correctly, integration testing passes.
+
+11. What is System Testing?
+Answer
+
+System Testing verifies the entire application as a complete system in an environment similar to production.
+Example
+For an Airline Booking System:
+Register
+Login
+Search Flights
+Book Ticket
+Payment
+Email Confirmation
+Cancel Ticket
+
+The complete end-to-end workflow is tested.
+
+12. What is End-to-End (E2E) Testing?
+Answer
+
+End-to-End Testing validates the complete business flow from the user's starting action to the final outcome.
+Example
+Online Shopping
+Login
+Search Product
+Add to Cart
+Checkout
+Payment
+Order Confirmation
+Email Notification
+
+The entire process is tested as one flow.
+13. What is UAT (User Acceptance Testing)?
+Answer
+UAT is performed by business users or customers to verify that the application meets business needs before production.
+
+Example
+A bank launches a new loan application feature.
+Business users test:
+Loan eligibility
+Application submission
+Approval workflow
+If satisfied, they approve the release.
+
+14. What is Acceptance Testing?
+Answer
+Acceptance Testing determines whether the software is ready for release and meets agreed business requirements.
+
+Types
+User Acceptance Testing (UAT)
+Alpha Testing
+Beta Testing
+Example
+
+A customer verifies all requested features before signing off the release.
+
+15. What is Compatibility Testing?
+Answer
+Compatibility Testing verifies that the application works correctly across different environments.
+It includes testing on:
+Browsers (Chrome, Firefox, Edge, Safari)
+Operating Systems (Windows, Linux, macOS)
+Mobile Devices (Android, iOS)
+Screen Resolutions
+Example
+
+Verify that an online banking application behaves consistently on Chrome, Firefox, and Edge.
+16. What is Exploratory Testing?
+Answer
+Exploratory Testing is an unscripted testing approach where testers simultaneously learn the application, design tests, and execute them.
+It relies on the tester's experience and intuition to uncover defects that scripted test cases might miss.
+
+Example
+
+While testing an online shopping application, you randomly:
+
+Add and remove items quickly.
+Refresh the page during checkout.
+Enter unexpected values.
+Open multiple browser tabs.
+
+This may reveal hidden issues.
+Frequently Asked Interview Questions
+Q1. Which testing is performed first?
+Answer:
+Smoke Testing. If the build is stable, further testing continues.
+Q2. Which testing is performed after bug fixes?
+Answer:
+Retesting first to verify the fix, followed by Regression Testing to ensure existing functionality is unaffected.
+Q3. Can Smoke Testing and Regression Testing be automated?
+Answer:
+Yes. Smoke and Regression Testing are excellent candidates for automation because they are repetitive and executed frequently.
+Q4. Who performs UAT?
+Answer:
+Business users, customers, or product owners perform UAT before the application goes live.
+Q5. Which testing would you automate?
+Answer:
+I would prioritize automating:
+Smoke Test Suite
+Regression Test Suite
+Stable and repetitive functional test cases
+Cross-browser tests
+API regression tests
+
+I would generally keep exploratory testing, usability testing, and frequently changing features as manual tests.
+Interview Scenario
+Interviewer: A developer fixes the login issue. What testing will you perform?
+
+Good Answer:
+First, I will perform retesting to verify that the login defect has been fixed. Once the login functionality works correctly, I will perform regression testing on related features such as Forgot Password, Remember Me, User Profile, Logout, and session management to ensure the fix has not introduced any side effects.

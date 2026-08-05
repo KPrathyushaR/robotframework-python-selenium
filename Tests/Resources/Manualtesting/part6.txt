@@ -1,0 +1,225 @@
+Tell me about yourself.
+Sample Answer
+
+I have over 6 years of experience in Manual and Automation Testing. I have worked on web-based applications, embedded engineering tools, REST API testing, database validation, and automation framework development.
+
+My expertise includes Functional Testing, Regression Testing, Smoke Testing, Integration Testing, API Testing, SQL validation, and Automation using Python, Selenium, Robot Framework, Playwright, and PyTest.
+
+I have worked in Agile Scrum teams, participated in sprint planning, backlog refinement, daily stand-ups, defect triage meetings, and release activities. I have also integrated automation suites with Jenkins and Git for CI/CD.
+
+I enjoy solving challenging problems, improving automation coverage, and collaborating with developers and business teams to deliver high-quality software.
+
+Tip: Keep this answer within 2–3 minutes.
+
+2. Explain your testing process from requirement to release.
+Answer
+
+My testing process follows these steps:
+
+Step 1: Requirement Analysis
+Read BRD, FRD, or User Stories.
+Clarify doubts with the Business Analyst or Product Owner.
+Identify test scenarios.
+Step 2: Test Planning
+Estimate effort.
+Identify risks.
+Decide testing scope.
+Step 3: Test Case Design
+Write test cases.
+Review with the team.
+Prepare test data.
+Step 4: Environment Setup
+Verify QA environment.
+Validate database.
+Ensure APIs are available.
+Step 5: Test Execution
+Execute test cases.
+Record results.
+Capture screenshots.
+Log defects.
+Step 6: Defect Tracking
+Report defects in Jira.
+Participate in defect triage.
+Retest fixes.
+Step 7: Regression Testing
+Execute regression suite.
+Validate impacted modules.
+Step 8: Test Closure
+Prepare Test Summary Report.
+Share testing metrics.
+Sign off for release.
+3. How do you estimate testing effort?
+Answer
+
+I estimate effort based on:
+
+Number of requirements
+Complexity
+Test scenarios
+Test data preparation
+Automation effort
+Risk
+Resource availability
+Example
+
+Suppose a Login module has:
+
+Login
+Forgot Password
+Remember Me
+OTP
+
+Estimate:
+
+Requirement Analysis → 2 hours
+
+Test Cases → 5 hours
+
+Execution → 8 hours
+
+Regression → 3 hours
+
+Total = 18 hours
+
+4. How do you prioritize test cases?
+Answer
+
+I prioritize test cases based on business impact and risk.
+
+High Priority
+Login
+Payment
+Registration
+Checkout
+Medium Priority
+Reports
+Profile
+Search
+Low Priority
+UI alignment
+Color
+Fonts
+5. What challenges have you faced in testing?
+Sample Answer
+
+Some common challenges include:
+
+Frequently changing requirements
+Tight release deadlines
+Environment instability
+Missing test data
+Delayed bug fixes
+Third-party API failures
+Example
+
+During one release, the QA environment was unavailable for a day. We coordinated with DevOps, tested unaffected modules first, and reprioritized our work to avoid delaying the release.
+
+6. How do you handle changing requirements?
+Answer
+
+When requirements change:
+
+Review the updated requirement.
+Discuss changes with the Product Owner or BA.
+Update test cases.
+Perform impact analysis.
+Update automation scripts if needed.
+Execute regression testing.
+7. What is Risk-Based Testing?
+Answer
+
+Risk-Based Testing focuses testing efforts on the areas with the highest business impact or technical risk.
+
+Example
+
+For an e-commerce application:
+
+Highest Risk:
+
+Payment
+Checkout
+Login
+
+Lower Risk:
+
+About Us
+Contact Us
+
+If time is limited, test high-risk modules first.
+
+8. How do you coordinate with developers when a defect is rejected?
+Sample Answer
+
+First, I verify that the issue is reproducible. Then I collect evidence such as screenshots, logs, videos, and database records. I discuss the issue with the developer to understand their perspective. If there is still disagreement, I review the requirement with the Business Analyst or Product Owner and participate in a defect triage meeting to reach a final decision.
+
+9. How do you decide when testing is complete?
+Answer
+
+Testing is complete when:
+
+All planned test cases are executed.
+Critical defects are fixed.
+High-priority defects are resolved or accepted.
+Regression testing is completed.
+Exit criteria are met.
+Product Owner approves release.
+10. What testing metrics have you used?
+Common Metrics
+Test Cases Executed
+Test Pass Percentage
+Test Fail Percentage
+Defect Density
+Defect Leakage
+Test Coverage
+Automation Coverage
+Defect Reopen Rate
+Example
+
+Test Cases = 500
+
+Executed = 500
+
+Passed = 480
+
+Failed = 20
+
+Pass Percentage = 96%
+
+11. How do you mentor junior testers?
+Sample Answer
+
+I help junior testers by:
+
+Explaining requirements.
+Reviewing test cases.
+Teaching defect reporting.
+Sharing best practices.
+Helping with SQL queries.
+Explaining automation basics.
+Reviewing pull requests when needed.
+12. Describe a critical defect you found.
+Sample Answer
+
+During regression testing, I found that after a successful payment, duplicate orders were being created. This could have resulted in customers being charged twice. I immediately logged the defect with screenshots, logs, and reproduction steps. The development team identified a duplicate API call, fixed it, and we verified the solution through retesting and regression testing before release.
+
+13. How do you perform regression testing?
+Answer
+
+I first identify the impacted modules, then execute the regression suite covering both affected and dependent functionality. I prioritize critical business flows such as login, payments, and user management. Where automation is available, I run the automated regression suite and manually verify high-risk scenarios that require manual validation.
+
+14. What documents do you prepare during testing?
+Answer
+Requirement Analysis Notes
+Test Plan
+Test Strategy (if applicable)
+Test Scenarios
+Test Cases
+RTM (Requirement Traceability Matrix)
+Test Data
+Bug Reports
+Test Execution Report
+Test Summary Report
+15. Why should we hire you?
+Sample Answer
+
+I bring over six years of experience in both manual and automation testing. I have worked across the complete testing lifecycle, from requirement analysis to release sign-off. My experience includes functional testing, API validation, SQL verification, regression testing, and automation using Python, Selenium, Robot Framework, Playwright, and PyTest. I am comfortable working in Agile teams, collaborating with developers and business stakeholders, and I focus on delivering high-quality software while continuously improving testing efficiency.

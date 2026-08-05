@@ -1,0 +1,231 @@
+1. What is Software Testing?
+Answer: Software Testing is the process of verifying and validating a software application to ensure it meets business requirements and works correctly without defects.
+Verification: Are we building the product right?
+Validation: Are we building the right product?
+
+Example
+Suppose an online shopping application should allow users to place an order.
+As a tester, you verify:
+Login works
+Product search works
+Add to cart works
+Payment works
+Order confirmation is generated
+
+If all functions work as expected, the software passes testing.
+Interview Tip:
+Software testing ensures software quality by identifying defects before the product reaches customers.
+
+2. Why is Testing Important?
+Answer: Testing is important because it:
+Finds defects early
+Improves software quality
+Reduces production issues
+Saves development cost
+Improves customer satisfaction
+Ensures security and reliability
+
+Example
+Imagine a banking application transfers ₹10,000 instead of ₹1,000 because of a calculation bug.
+
+Without testing:
+Customer loses money.
+Bank loses reputation.
+Testing prevents such issues.
+
+3. What is SDLC?
+Answer: SDLC (Software Development Life Cycle) is the complete process of developing software from requirements to maintenance.
+Phases
+Requirement Gathering
+Analysis
+Design
+Development
+Testing
+Deployment
+Maintenance
+Example: Food Delivery App
+Requirement → Users can order food
+Design → UI screens
+Development → Developers write code
+Testing → QA verifies features
+Deployment → Release to users
+Maintenance → Bug fixes and updates
+
+4. What is STLC?
+Answer: STLC (Software Testing Life Cycle) is the sequence of testing activities performed by the QA team.
+Phases
+Requirement Analysis
+Test Planning
+Test Case Design
+Test Environment Setup
+Test Execution
+Defect Reporting
+Test Closure
+Example: Suppose your company develops an Airline Booking application.
+
+The QA team:
+Studies requirements
+Writes test cases
+Executes tests
+Logs bugs
+Retests fixes
+Completes testing
+5. Difference between SDLC and STLC
+SDLC	STLC
+Software development process	Software testing process
+Performed by developers	Performed by testers
+Starts with requirements	Starts after requirement analysis
+Ends with maintenance	Ends with test closure
+6. What is a Test Plan?
+Answer: A Test Plan is a document that explains how testing will be performed.
+It includes:
+Scope
+Objectives
+Resources
+Schedule
+Risks
+Entry criteria
+Exit criteria
+Test environment
+Example: For an E-commerce project:
+
+Scope:
+Login
+Cart
+Checkout
+
+Out of Scope:
+Mobile application
+
+Resources:
+3 QA Engineers
+
+Duration:
+20 Days
+
+7. What is a Test Strategy?
+Answer: A Test Strategy is a high-level document that defines the overall testing approach for the project or organization.
+It includes:
+
+Types of Testing
+Automation approach
+Tools
+Risk management
+Test environments
+
+Example
+Company Strategy
+Smoke Testing
+Regression Testing
+Selenium Automation
+API Testing using Postman
+8. Difference between Test Plan and Test Strategy
+Test Plan	Test Strategy
+Project-specific	Organization-wide
+Prepared by Test Lead	Prepared by QA Manager/Architect
+Can change	Usually stable
+Describes execution	Describes approach
+9. What is a Test Scenario?
+Answer: A Test Scenario is a high-level description of what needs to be tested.
+It answers:
+What should be tested?
+Example
+Login Page
+
+Scenarios:
+Login with valid credentials
+Login with invalid credentials
+Forgot Password
+Remember Me
+Logout
+
+10. What is a Test Case?
+Answer: A Test Case is a detailed document that explains how to test a specific scenario.
+It contains:
+Test Steps
+Test Data
+Expected Result
+Actual Result
+Pass/Fail
+Example
+
+Test Case ID: TC_Login_001
+Scenario: Login with valid credentials
+Steps:
+Open the application.
+Enter username.
+Enter password.
+Click Login.
+Expected Result:
+Dashboard should open successfully.
+
+11. What are Test Steps?
+Answer: Test Steps are the sequence of actions executed to validate a test case.
+
+Example
+Scenario: Login
+Steps:
+
+Open browser.
+Enter URL.
+Enter username.
+Enter password.
+Click Login.
+
+12. What is a Test Suite?
+Answer: A Test Suite is a collection of related test cases.
+Example
+Login Module
+Test Suite contains:
+Valid Login
+Invalid Login
+Locked User
+Forgot Password
+Logout
+
+13. What is Requirement Traceability Matrix (RTM)?
+Answer: RTM is a document that maps requirements to corresponding test cases, ensuring complete test coverage.
+Example
+Requirement	Test Case
+User Login	TC001
+Forgot Password	TC002
+Registration	TC003
+Why is RTM important?
+Ensures all requirements are tested.
+Helps identify missing test cases.
+Supports impact analysis when requirements change.
+14. What is Requirement Analysis?
+Answer: Requirement Analysis is the process of studying business and functional requirements to understand what needs to be tested.
+
+Activities
+Read requirement documents.
+Clarify doubts with stakeholders.
+Identify test scenarios.
+Assess risks.
+Estimate testing effort.
+Example
+Requirement:
+User should receive an OTP within 30 seconds.
+Tester identifies scenarios:
+Valid mobile number.
+Invalid mobile number.
+OTP expiry.
+Resend OTP.
+Network delay.
+
+15. What is Test Data?
+Answer: Test Data is the input used to execute test cases and verify application behavior.
+Types of Test Data
+Valid Data
+Invalid Data
+Boundary Data
+Empty Data
+Large Data
+Example
+Login Page
+Username	Password	Expected Result
+admin	Admin123	Login Success
+admin	wrong123	Invalid Password
+(blank)	Admin123	Username Required
+admin	(blank)	Password Required
+(blank)	(blank)	Validation Message

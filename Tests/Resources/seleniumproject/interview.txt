@@ -1,0 +1,1013 @@
+Part 1: What is Selenium?
+
+Imagine you're testing a website manually.
+
+Normally you:
+
+Open Chrome
+Go to website
+Enter username
+Enter password
+Click Login
+Verify Home Page
+
+Selenium performs these steps automatically.
+
+Instead of you clicking,
+
+Python tells Chrome what to do.
+
+Python Program
+        │
+        ▼
+ Selenium WebDriver
+        │
+        ▼
+ Google Chrome
+        │
+        ▼
+ Website
+Real World Example
+
+Manual Testing
+
+Open Chrome
+↓
+
+Type Username
+↓
+
+Type Password
+↓
+
+Click Login
+↓
+
+Verify Dashboard
+
+Automation Testing
+
+driver.get()
+
+↓
+
+send_keys()
+
+↓
+
+click()
+
+↓
+
+assert
+
+Exactly the same process—but automated.
+
+Part 2: Install Selenium
+
+Open VS Code Terminal
+
+Step 1
+pip install selenium
+
+Check installation
+
+pip show selenium
+
+Example output
+
+Name: selenium
+
+Version: 4.x.x
+Part 3: Chrome Driver
+
+Good news!
+
+Selenium 4 automatically downloads the correct ChromeDriver.
+
+No need to download manually.
+
+Project Structure
+SeleniumProject/
+
+    test.py
+Part 4: First Selenium Program
+
+Create
+
+test.py
+
+Write this code
+
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+
+driver.get("https://www.google.com")
+
+print(driver.title)
+
+driver.quit()
+Explanation
+
+Import Selenium
+
+from selenium import webdriver
+
+Open Chrome
+
+driver = webdriver.Chrome()
+
+Open Website
+
+driver.get("https://www.google.com")
+
+Print page title
+
+print(driver.title)
+
+Close browser
+
+driver.quit()
+Expected Output
+
+Chrome opens
+
+↓
+
+Google loads
+
+↓
+
+Terminal prints
+
+Google
+
+↓
+
+Chrome closes
+
+🎉 Congratulations! You have completed your first automation.
+
+Part 5: Understanding driver
+
+Think of
+
+driver
+
+as a remote control for Chrome.
+
+Everything starts with
+
+driver
+
+Examples
+
+Open website
+
+driver.get(url)
+
+Find element
+
+driver.find_element()
+
+Maximize window
+
+driver.maximize_window()
+
+Close browser
+
+driver.quit()
+Part 6: Locators
+
+A locator tells Selenium which HTML element to interact with.
+
+Example login page
+
+Username
+
+Password
+
+Login Button
+
+How does Selenium know which textbox is Username?
+
+Using locators.
+
+1. ID (Best Locator)
+
+HTML
+
+<input id="username">
+
+Python
+
+driver.find_element("id", "username")
+2. Name
+<input name="email">
+driver.find_element("name", "email")
+3. Class Name
+<input class="textbox">
+driver.find_element("class name", "textbox")
+4. Tag Name
+driver.find_element("tag name", "input")
+5. Link Text
+<a>Forgot Password</a>
+driver.find_element("link text", "Forgot Password")
+6. Partial Link Text
+driver.find_element("partial link text", "Forgot")
+7. CSS Selector ⭐⭐⭐⭐⭐
+
+Very fast.
+
+HTML
+
+<input id="username">
+
+Python
+
+driver.find_element("css selector", "#username")
+
+Another example
+
+driver.find_element("css selector", ".button")
+8. XPath ⭐⭐⭐⭐⭐
+
+Most commonly used in interviews.
+
+Example
+
+driver.find_element("xpath", "//input[@id='username']")
+Which Locator Should You Use?
+Priority	Locator
+1	ID
+2	Name
+3	CSS Selector
+4	XPath
+5	Link Text
+6	Class Name
+7	Tag Name
+Example Login Automation
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+
+driver.get("https://the-internet.herokuapp.com/login")
+
+driver.find_element("id", "username").send_keys("tomsmith")
+
+driver.find_element("id", "password").send_keys("SuperSecretPassword!")
+
+driver.find_element("css selector", "button.radius").click()
+
+print(driver.title)
+
+driver.quit()
+
+This program:
+
+Opens Chrome.
+Navigates to the login page.
+Enters the username and password.
+Clicks Login.
+Prints the page title.
+Closes the browser.
+Most Asked Interview Questions
+Q1. What is Selenium?
+
+Answer:
+Selenium is an open-source browser automation tool used to automate web application testing. It supports multiple browsers (Chrome, Firefox, Edge, Safari) and multiple programming languages such as Python, Java, C#, and JavaScript.
+
+Q2. What is WebDriver?
+
+Answer:
+WebDriver is the Selenium component that communicates directly with the browser and performs user actions like clicking, typing, selecting, and navigating.
+
+Q3. Why is Selenium popular?
+
+Answer:
+
+Open source
+Cross-browser support
+Cross-platform support
+Multiple language support
+Easy integration with testing frameworks and CI/CD tools
+Q4. Which locator is best?
+
+Answer:
+Prefer this order:
+
+ID
+Name
+CSS Selector
+XPath
+
+IDs are usually the fastest and most reliable when available.
+Interview Question
+Q: What is the difference between driver.close() and driver.quit()?
+
+Answer:
+
+driver.close()	driver.quit()
+Closes only the current browser window.	Closes all browser windows opened by Selenium and ends the WebDriver session.
+
+Example:
+
+If Selenium opens 3 browser tabs:
+
+driver.close() closes only the active tab.
+driver.quit() closes all tabs and exits the browser completely.
+
+=============================================================================
+Selenium Lesson 2 (15-Minute Classroom Mode)
+Topic: Locators, find_element(), send_keys(), and click()
+
+🎯 Goal: By the end of this lesson, you'll be able to locate web elements and automate a login form.
+
+What You'll Learn
+What is an HTML element?
+What are locators?
+find_element()
+send_keys()
+click()
+clear()
+Build your first login automation
+Part 1: What is an HTML Element?
+
+When you open a website, everything you see is made of HTML elements.
+
+For example:
+
+<input id="username" type="text">
+
+<input id="password" type="password">
+
+<button>Login</button>
+
+These are:
+
+Username textbox
+Password textbox
+Login button
+
+Selenium must identify these elements before interacting with them.
+
+Part 2: What are Locators?
+
+A locator tells Selenium which element to interact with.
+
+Think of it like a house address.
+
+Without an address, the delivery person can't find the house.
+
+Without a locator, Selenium can't find the element.
+
+Part 3: Selenium Locator Types
+Locator	Example	Recommended
+ID	id="username"	⭐⭐⭐⭐⭐ Best
+Name	name="email"	⭐⭐⭐⭐
+Class Name	class="btn"	⭐⭐⭐
+Tag Name	input	⭐⭐
+Link Text	Forgot Password	⭐⭐⭐
+Partial Link Text	Forgot	⭐⭐⭐
+CSS Selector	#username	⭐⭐⭐⭐⭐
+XPath	//input[@id='username']	⭐⭐⭐⭐⭐
+Interview Tip
+
+Preferred order:
+
+ID
+Name
+CSS Selector
+XPath
+Part 4: find_element()
+
+General syntax:
+
+driver.find_element(By.ID, "username")
+
+Notice we use By.ID, so we need:
+
+from selenium.webdriver.common.by import By
+Part 5: Finding Elements
+Find by ID
+
+HTML:
+
+<input id="username">
+
+Python:
+
+driver.find_element(By.ID, "username")
+Find by Name
+
+HTML:
+
+<input name="email">
+
+Python:
+
+driver.find_element(By.NAME, "email")
+Find by Class Name
+
+HTML:
+
+<input class="textbox">
+
+Python:
+
+driver.find_element(By.CLASS_NAME, "textbox")
+Find by CSS Selector
+
+HTML:
+
+<input id="username">
+
+Python:
+
+driver.find_element(By.CSS_SELECTOR, "#username")
+
+Another example:
+
+driver.find_element(By.CSS_SELECTOR, ".btn")
+Find by XPath
+
+HTML:
+
+<input id="username">
+
+Python:
+
+driver.find_element(By.XPATH, "//input[@id='username']")
+Part 6: send_keys()
+
+send_keys() types text into a textbox.
+
+Example:
+
+driver.find_element(By.ID, "username").send_keys("tomsmith")
+
+This is the same as typing:
+
+tomsmith
+Part 7: click()
+
+Clicks a button, checkbox, radio button, or link.
+
+Example:
+
+driver.find_element(By.CSS_SELECTOR, "button.radius").click()
+Part 8: clear()
+
+Removes existing text from a textbox.
+
+Example:
+
+username = driver.find_element(By.ID, "username")
+
+username.clear()
+
+username.send_keys("admin")
+Your First Login Automation
+
+We'll use this practice website:
+
+https://the-internet.herokuapp.com/login
+
+Username
+tomsmith
+Password
+SuperSecretPassword!
+Complete Program
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+driver = webdriver.Chrome()
+
+driver.maximize_window()
+
+driver.get("https://the-internet.herokuapp.com/login")
+
+driver.find_element(By.ID, "username").send_keys("tomsmith")
+
+driver.find_element(By.ID, "password").send_keys("SuperSecretPassword!")
+
+driver.find_element(By.CSS_SELECTOR, "button.radius").click()
+
+print("Title :", driver.title)
+
+print("Current URL :", driver.current_url)
+
+time.sleep(5)
+
+driver.quit()
+Expected Flow
+Open Chrome
+        ↓
+Open Login Page
+        ↓
+Find Username
+        ↓
+Enter Username
+        ↓
+Find Password
+        ↓
+Enter Password
+        ↓
+Find Login Button
+        ↓
+Click Login
+        ↓
+Dashboard Opens
+Storing Elements in Variables
+
+Instead of writing:
+
+driver.find_element(By.ID, "username").send_keys("tomsmith")
+
+Write:
+
+username = driver.find_element(By.ID, "username")
+
+username.send_keys("tomsmith")
+
+Advantages:
+
+Easier to read
+Easier to debug
+Easier to reuse
+Common Beginner Mistakes
+❌ Forgetting By
+driver.find_element("id", "username")
+
+✅ Correct:
+
+driver.find_element(By.ID, "username")
+❌ Wrong Locator
+driver.find_element(By.ID, "user")
+
+If the actual HTML has:
+
+<input id="username">
+
+Selenium throws:
+
+NoSuchElementException
+❌ Clicking Before the Page Loads
+driver.find_element(By.ID, "login").click()
+
+If the element hasn't loaded yet, Selenium fails.
+
+We'll solve this in Lesson 3 using Explicit Waits.
+
+Interview Questions
+Q1. What is a locator?
+
+Answer:
+A locator is a way to identify a web element on a webpage so Selenium can interact with it.
+
+Q2. Which locator is the best?
+
+Answer:
+ID is preferred because it is usually unique, fast, and reliable.
+
+Q3. Difference between CSS Selector and XPath?
+CSS Selector	XPath
+Faster	More flexible
+Shorter syntax	Can navigate relationships in the DOM
+Good for most cases	Useful for complex structures
+Q4. What does send_keys() do?
+
+Answer:
+It enters text into an input field.
+
+Q5. What does clear() do?
+
+Answer:
+It removes any existing text from an input field before entering new text.
+
+Hands-on Assignment
+Task 1
+
+Write a program that:
+
+Opens the login page.
+Enters the username.
+Enters the password.
+Clicks Login.
+Prints:
+Page title
+Current URL
+Task 2
+
+Modify the program to:
+
+Store the username textbox in a variable.
+Store the password textbox in another variable.
+Use .clear() before entering values.
+Print "Login Successful" after clicking the button.
+Homework Challenge
+
+Automate the following website:
+
+https://the-internet.herokuapp.com/forgot_password
+
+Steps:
+
+Open the page.
+Enter your email address.
+Click Retrieve Password.
+Print the page title.
+Close the browser.
+=================================================================================
+Selenium Lesson 3 (15-Minute Classroom Mode)
+Topic: Waits in Selenium (Most Important Interview Topic)
+
+🎯 Goal: By the end of this lesson, you will understand:
+
+Why Selenium waits are required
+Difference between sleep(), Implicit Wait, Explicit Wait
+How to use WebDriverWait
+How to handle slow-loading elements
+Real interview answers
+Part 1: Why Do We Need Waits?
+
+Imagine Selenium opens a website:
+
+Selenium
+   |
+   ↓
+Open Login Page
+   |
+   ↓
+Find Username Box
+   |
+   ↓
+Enter Username
+
+But the website takes 3 seconds to load.
+
+Selenium is very fast.
+
+It searches immediately:
+
+0 seconds → Find username element
+             |
+             ↓
+          Element not available
+             |
+             ↓
+          Error ❌
+
+Error:
+
+NoSuchElementException
+
+So we tell Selenium:
+
+"Wait until the element is available."
+
+Part 2: Types of Waits
+
+Selenium has three common waits:
+
+Wait	Purpose	Usage
+time.sleep()	Fixed wait	Beginners only
+Implicit Wait	Global wait	Basic automation
+Explicit Wait	Condition-based wait	⭐ Recommended
+1. Static Wait - time.sleep()
+
+Example:
+
+import time
+
+time.sleep(5)
+
+Meaning:
+
+"Stop execution for exactly 5 seconds."
+
+Problem with sleep()
+
+Example:
+
+Page loads in:
+
+2 seconds
+
+But you wrote:
+
+time.sleep(10)
+
+Selenium waits:
+
+2 sec loading
++
+8 sec unnecessary waiting
+
+Your automation becomes slow.
+
+Another problem:
+
+If page takes:
+
+12 seconds
+
+Your test fails.
+
+Because:
+
+time.sleep(10)
+
+is finished.
+
+Interview Answer
+Q: Why should we avoid time.sleep()?
+
+Answer:
+
+"Because it is a hard-coded wait. It waits for a fixed amount of time regardless of whether the element is available or not. Explicit waits are preferred because they wait only until a required condition is met."
+
+2. Implicit Wait
+
+Implicit wait tells Selenium:
+
+"Wait this much time whenever you search for an element."
+
+Syntax:
+
+driver.implicitly_wait(10)
+
+Example:
+
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+
+driver.implicitly_wait(10)
+
+driver.get("https://www.google.com")
+
+Meaning:
+
+Whenever Selenium searches an element:
+
+Maximum wait = 10 seconds
+
+Example:
+
+driver.find_element(By.ID,"username")
+
+Selenium:
+
+Element available immediately?
+       |
+       Yes → Continue
+
+       No
+       |
+       Wait up to 10 seconds
+Advantages
+
+✅ Simple
+✅ Applies globally
+
+Disadvantages
+
+❌ Cannot wait for specific conditions
+❌ Can slow execution
+❌ Less control
+
+3. Explicit Wait ⭐⭐⭐⭐⭐
+
+This is the most important interview topic.
+
+Explicit wait:
+
+"Wait until a specific condition happens."
+
+Examples:
+
+Wait until:
+
+Element is visible
+Element is clickable
+Alert appears
+Text appears
+
+Syntax:
+
+WebDriverWait(driver, timeout).until(condition)
+
+Import:
+
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+Example: Wait Until Button is Clickable
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+
+wait = WebDriverWait(driver,10)
+
+login_button = wait.until(
+    EC.element_to_be_clickable(
+        (By.ID,"login")
+    )
+)
+
+login_button.click()
+Explanation
+wait = WebDriverWait(driver,10)
+
+Maximum waiting time:
+
+10 seconds
+EC.element_to_be_clickable()
+
+Condition:
+
+"Is this button ready to click?"
+
+If available after:
+
+3 seconds
+
+Selenium continues immediately.
+
+It does NOT wait remaining 7 seconds.
+
+Common Expected Conditions
+1. Element Visible
+EC.visibility_of_element_located()
+
+Example:
+
+element = wait.until(
+EC.visibility_of_element_located(
+(By.ID,"username")
+))
+2. Element Clickable
+
+Most used.
+
+EC.element_to_be_clickable()
+3. Element Present
+EC.presence_of_element_located()
+4. Title Contains
+EC.title_contains("Dashboard")
+Real Login Example With Explicit Wait
+import time
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+
+driver = webdriver.Chrome()
+
+driver.get(
+"https://the-internet.herokuapp.com/login"
+)
+
+driver.maximize_window()
+
+
+wait = WebDriverWait(driver,10)
+
+
+username = wait.until(
+EC.visibility_of_element_located(
+(By.ID,"username")
+)
+)
+
+username.send_keys("tomsmith")
+
+
+password = driver.find_element(
+By.ID,
+"password"
+)
+
+password.send_keys(
+"SuperSecretPassword!"
+)
+
+
+login = wait.until(
+EC.element_to_be_clickable(
+(By.CSS_SELECTOR,"button.radius")
+)
+)
+
+login.click()
+
+
+time.sleep(3)
+
+driver.quit()
+Exception Handling
+1. NoSuchElementException
+
+When Selenium cannot find an element.
+
+Example:
+
+driver.find_element(By.ID,"wrong")
+
+Error:
+
+NoSuchElementException
+2. TimeoutException
+
+When explicit wait reaches timeout.
+
+Example:
+
+wait.until(
+EC.visibility_of_element_located(
+(By.ID,"abc")
+)
+)
+
+After 10 seconds:
+
+TimeoutException
+Handling Exceptions Example
+from selenium.common.exceptions import TimeoutException
+
+
+try:
+
+    element = wait.until(
+    EC.visibility_of_element_located(
+    (By.ID,"username")
+    ))
+
+except TimeoutException:
+
+    print("Element not found")
+Important Interview Questions
+Q1. What are different types of waits in Selenium?
+
+Answer:
+
+"Selenium provides implicit wait and explicit wait. Additionally, Python's time.sleep() can be used as a static wait, but it is not recommended for production automation."
+
+Q2. Difference between implicit and explicit wait?
+Implicit Wait	Explicit Wait
+Applies globally	Applies to specific element
+Waits for element presence	Waits for condition
+Less flexible	More flexible
+Simple	Recommended
+Q3. Which wait do you prefer in automation framework?
+
+Answer:
+
+"I prefer explicit waits because they improve test stability by waiting for specific conditions like visibility or clickability instead of adding unnecessary delays."
+
+Q4. Why does Selenium fail sometimes even though the element exists?
+
+Answer:
+
+"The element may exist in the DOM but may not be loaded, visible, or clickable. We handle this using explicit waits."
+
+Hands-on Assignment
+
+Create a login script using:
+
+✅ Chrome browser
+✅ Explicit wait
+✅ Username
+✅ Password
+✅ Login button
+
+Requirements:
+
+Do NOT use time.sleep().
+Use:
+WebDriverWait
+ExpectedConditions
+Print:
+Login completed successfully
+
+after clicking the button.
+
+Practice Interview Question
+
+Explain this line:
+
+wait.until(
+EC.element_to_be_clickable(
+(By.ID,"login")
+))
+
+Your answer should be:
+
+"It tells Selenium to wait until the element with ID login becomes clickable. Selenium checks the condition repeatedly until the timeout value is reached."
+=======================================================================================================

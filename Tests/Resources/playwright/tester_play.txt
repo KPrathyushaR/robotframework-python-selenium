@@ -1,0 +1,646 @@
+Playwright is an open-source end-to-end test automation framework developed by Microsoft. It supports modern web applications and allows automation across Chromium, Firefox, and WebKit using languages such as Python, JavaScript/TypeScript, Java, and .NET.
+
+1. Playwright Architecture
+
+The basic hierarchy is:
+
+Playwright → Browser → Browser Context → Page → Locator
+
+Example:
+
+from playwright.sync_api import sync_playwright
+
+
+with sync_playwright() as p:
+    browser = p.chromium.launch(headless=False)
+    context = browser.new_context()
+    page = context.new_page()
+
+
+    page.goto("https://example.com")
+    print(page.title())
+
+
+    browser.close()
+2. Important Components
+
+Browser
+
+Represents Chromium, Firefox, or WebKit.
+Usually launched once for a test session.
+browser = p.chromium.launch()
+
+Browser Context
+
+An isolated browser session.
+Similar to a fresh/incognito profile.
+Useful for running tests independently.
+context = browser.new_context()
+
+Page
+
+Represents a browser tab.
+page = context.new_page()
+page.goto("https://example.com")
+
+Locator
+
+Used to identify and interact with elements.
+Playwright recommends user-facing locators.
+page.get_by_role("button", name="Login").click()
+page.get_by_label("Username").fill("admin")
+3. Playwright Auto-Waiting ⭐
+
+This is one of the most important interview concepts.
+
+Playwright automatically waits for an element to become actionable before performing an action.
+
+For example:
+
+page.get_by_role("button", name="Login").click()
+
+Before clicking, Playwright checks conditions such as whether the element is:
+
+Present
+Visible
+Stable
+Enabled
+Able to receive the action
+
+Therefore, we generally don't need unnecessary sleep() statements.
+
+Interview answer
+
+"Playwright has built-in auto-waiting. Before performing an action, it waits for the element to satisfy the required actionability checks such as visibility, stability and enabled state. This reduces flaky tests and the need for hard waits."
+
+4. Locators ⭐⭐⭐
+
+Common Playwright locators:
+
+page.get_by_role("button", name="Login")
+page.get_by_text("Welcome")
+page.get_by_label("Username")
+page.get_by_placeholder("Enter username")
+page.get_by_test_id("login-button")
+
+CSS:
+
+page.locator("#username")
+page.locator(".login-button")
+
+XPath:
+
+page.locator("//button[@type='submit']")
+Preferred order
+
+Generally prefer:
+
+Role → Label → Text → Placeholder → Test ID → CSS/XPath
+
+Because user-facing locators are usually more resilient.
+
+5. Assertions
+
+Playwright provides built-in assertions.
+
+from playwright.sync_api import expect
+
+
+expect(page).to_have_title("Login Page")
+expect(page.get_by_role("button", name="Login")).to_be_visible()
+expect(page.get_by_text("Welcome")).to_have_text("Welcome")
+
+These assertions also have automatic waiting, which helps avoid flaky validation.
+
+6. Browser Context ⭐
+
+This is a major difference from Selenium.
+
+context1 = browser.new_context()
+context2 = browser.new_context()
+
+Each context can have its own:
+
+Cookies
+Local storage
+Session
+Permissions
+Authentication state
+
+This makes isolated and parallel testing easier.
+
+Interview answer
+
+"A BrowserContext is an isolated browser session inside a browser instance. It provides separate cookies, storage and session data, so tests can run independently without launching a separate browser for every test."
+
+7. Handling New Tab / Window
+
+Playwright doesn't require traditional window handles like Selenium.
+
+with page.expect_popup() as popup_info:
+    page.get_by_text("Open Window").click()
+
+
+new_page = popup_info.value
+new_page.wait_for_load_state()
+print(new_page.title())
+8. Handling Frames
+frame = page.frame_locator("#payment-frame")
+
+
+frame.get_by_label("Card Number").fill("123456789")
+
+frame_locator() makes iframe interaction much easier.
+
+9. Alerts
+page.on("dialog", lambda dialog: dialog.accept())
+
+
+page.get_by_role("button", name="Delete").click()
+
+For dismiss:
+
+page.on("dialog", lambda dialog: dialog.dismiss())
+10. Screenshots
+page.screenshot(path="screenshot.png")
+
+Full-page screenshot:
+
+page.screenshot(path="full.png", full_page=True)
+11. File Upload
+page.get_by_label("Upload file").set_input_files("test.pdf")
+12. Network Interception ⭐
+
+Playwright can intercept network requests.
+
+page.route("**/api/users", lambda route: route.abort())
+
+It can also mock API responses.
+
+page.route(
+    "**/api/users",
+    lambda route: route.fulfill(
+        status=200,
+        body='{"name":"Test User"}'
+    )
+)
+
+This is especially useful for testing applications when backend services are unavailable.
+
+Selenium vs Playwright ⭐⭐⭐
+Selenium	Playwright
+WebDriver-based	Browser automation protocol/CDP/WebSocket-based architecture
+Explicit waits commonly used	Built-in auto-waiting
+Window handles commonly used	Page/context model
+Browser profiles/sessions require more setup	BrowserContext provides isolation
+Separate tools often needed	Built-in tracing, screenshots, video support
+More synchronization code	Less synchronization code
+Mature ecosystem	Strong modern web-app automation
+Selenium Grid commonly used	Built-in parallel/context capabilities
+Strong interview answer
+
+"I have primarily worked with Selenium, but I'm currently expanding my automation expertise with Playwright. The main advantages I see are built-in auto-waiting, browser-context isolation, powerful locators, built-in tracing, network interception and easier handling of multiple pages. I would use Playwright to build a maintainable Python-based automation framework using Page Object Model and PyTest."
+
+
+1. What is Playwright?
+
+Answer:
+
+Playwright is an open-source end-to-end automation framework developed by Microsoft. It supports Chromium, Firefox, and WebKit browsers. It provides features like auto-waiting, powerful locators, browser-context isolation, parallel execution, network interception, screenshots, tracing and API testing.
+
+2. What are the advantages of Playwright over Selenium?
+
+Answer:
+
+The main advantages are built-in auto-waiting, browser-context isolation, reliable locators, easy handling of multiple tabs and frames, network interception, tracing, screenshots and better support for modern web applications. Playwright also requires less explicit synchronization compared with Selenium.
+
+Key points
+Auto-waiting
+Browser contexts
+Multiple tabs/pages
+Network mocking
+Trace viewer
+Built-in screenshots/video
+Parallel execution
+Chromium/Firefox/WebKit
+3. What is sync_playwright()?
+
+Answer:
+
+sync_playwright() provides the synchronous Playwright API in Python. It allows us to write Playwright automation code sequentially without using async/await.
+
+from playwright.sync_api import sync_playwright
+
+
+with sync_playwright() as p:
+    browser = p.chromium.launch(headless=False)
+    page = browser.new_page()
+    page.goto("https://example.com")
+
+There is also an asynchronous API:
+
+from playwright.async_api import async_playwright
+⭐ 4. Explain Browser, BrowserContext and Page.
+
+Answer:
+
+Browser represents the actual browser instance. BrowserContext represents an isolated browser session with separate cookies and storage. Page represents a browser tab.
+
+Playwright
+    ↓
+Browser
+    ↓
+BrowserContext
+    ↓
+Page
+
+Example:
+
+browser = p.chromium.launch()
+context = browser.new_context()
+page = context.new_page()
+⭐ 5. What is Playwright auto-waiting?
+
+Answer:
+
+Playwright automatically waits for an element to become actionable before performing an action. For example, before clicking, it checks conditions such as visibility, stability and whether the element is enabled and can receive the action. This reduces flaky tests and the need for hard waits.
+
+page.get_by_role("button", name="Login").click()
+
+We generally should not do:
+
+time.sleep(5)
+⭐ 6. What are Playwright locators?
+
+Answer:
+
+Locators are used to identify elements on a web page. Playwright provides user-facing locators such as get_by_role, get_by_label, get_by_text, get_by_placeholder and get_by_test_id.
+
+page.get_by_role("button", name="Login")
+page.get_by_label("Username")
+page.get_by_text("Welcome")
+page.get_by_placeholder("Enter username")
+page.get_by_test_id("login-button")
+⭐ 7. Which locator do you prefer?
+
+Answer:
+
+I prefer user-facing locators such as role, label and text because they are generally more readable and maintainable. If those are not suitable, I use a stable test ID. I use CSS or XPath as a last option when necessary.
+
+⭐ 8. What is the difference between locator() and get_by_role()?
+
+Answer:
+
+locator() can use CSS or XPath:
+
+page.locator("#username")
+page.locator("//button[@type='submit']")
+
+get_by_role() identifies elements based on their accessibility role:
+
+page.get_by_role("button", name="Login")
+
+Interview point:
+
+I prefer get_by_role() because it is closer to how a user interacts with the application and usually makes the test more readable.
+
+⭐ 9. How do you handle dropdowns?
+
+For a standard HTML <select>:
+
+page.locator("#country").select_option("India")
+
+Or:
+
+page.locator("#country").select_option(label="India")
+
+For a custom dropdown:
+
+page.get_by_role("combobox").click()
+page.get_by_text("India").click()
+⭐ 10. How do you handle alerts?
+
+Answer:
+
+page.on("dialog", lambda dialog: dialog.accept())
+
+
+page.get_by_role("button", name="Delete").click()
+
+For dismiss:
+
+page.on("dialog", lambda dialog: dialog.dismiss())
+⭐ 11. How do you handle multiple tabs?
+
+Answer:
+
+Playwright uses the Page model instead of Selenium-style window handles.
+
+with page.expect_popup() as popup_info:
+    page.get_by_text("Open").click()
+
+
+new_page = popup_info.value
+
+
+new_page.wait_for_load_state()
+print(new_page.title())
+⭐ 12. How do you handle iframes?
+
+Answer:
+
+frame = page.frame_locator("#payment-frame")
+
+
+frame.get_by_label("Card Number").fill("123456789")
+
+I prefer frame_locator() because it provides a convenient way to interact with elements inside an iframe.
+
+⭐ 13. How do you upload a file?
+page.get_by_label("Upload").set_input_files("test.pdf")
+⭐ 14. How do you take a screenshot?
+page.screenshot(path="failure.png")
+
+Full page:
+
+page.screenshot(
+    path="full_page.png",
+    full_page=True
+)
+⭐ 15. What is Playwright tracing?
+
+Answer:
+
+Playwright tracing records test execution details such as actions, screenshots, DOM snapshots and network information. It is very useful for debugging failed tests in CI/CD.
+
+Example:
+
+context.tracing.start(
+    screenshots=True,
+    snapshots=True,
+    sources=True
+)
+
+
+# test execution
+
+
+context.tracing.stop(path="trace.zip")
+⭐ 16. How do you validate elements?
+
+Use Playwright's expect().
+
+from playwright.sync_api import expect
+
+
+expect(page.get_by_text("Welcome")).to_be_visible()
+
+
+expect(page).to_have_title("Home Page")
+
+
+expect(page.get_by_role("button")).to_be_enabled()
+⭐ 17. What is the difference between assert and expect()?
+
+Answer:
+
+Python:
+
+assert title == "Home"
+
+Playwright:
+
+expect(page).to_have_title("Home")
+
+expect() provides Playwright's built-in waiting and retry behavior, whereas a normal Python assertion checks the condition immediately.
+
+⭐ 18. How do you handle authentication?
+
+A common approach is to authenticate once and reuse the storage state.
+
+context = browser.new_context(
+    storage_state="auth.json"
+)
+
+This can contain authentication-related browser state such as cookies/local storage.
+
+⭐ 19. How do you perform API testing in Playwright?
+
+Playwright provides an API request context.
+
+request = playwright.request.new_context()
+
+
+response = request.get(
+    "https://example.com/api/users"
+)
+
+
+print(response.status)
+print(response.json())
+
+You can validate:
+
+assert response.status == 200
+⭐ 20. What is Page Object Model?
+
+Answer:
+
+Page Object Model is a design pattern where page locators and page-specific actions are maintained in separate classes. Test cases use those methods instead of directly interacting with locators. This improves maintainability, readability and reusability.
+
+Example:
+
+class LoginPage:
+
+
+    def __init__(self, page):
+        self.page = page
+        self.username = page.get_by_label("Username")
+        self.password = page.get_by_label("Password")
+        self.login_button = page.get_by_role(
+            "button",
+            name="Login"
+        )
+
+
+    def login(self, username, password):
+        self.username.fill(username)
+        self.password.fill(password)
+        self.login_button.click()
+
+Test:
+
+def test_login(page):
+    login = LoginPage(page)
+
+
+    login.login("admin", "password")
+⭐ 21. How would you design a Playwright framework?
+
+Strong answer for your experience:
+
+I would use Python with Playwright and PyTest. I would follow Page Object Model to separate locators and page actions from test cases. I would create reusable fixtures for browser and context setup, configuration files for environment-specific data, utilities for common operations, and separate test-data management. I would configure screenshots and traces for failures and integrate the framework with Git and Jenkins for CI/CD execution. I would also enable parallel execution where appropriate.
+
+Possible structure:
+
+project/
+│
+├── tests/
+│   ├── test_login.py
+│   └── test_checkout.py
+│
+├── pages/
+│   ├── login_page.py
+│   └── checkout_page.py
+│
+├── utils/
+│   └── helpers.py
+│
+├── test_data/
+│
+├── conftest.py
+├── pytest.ini
+└── requirements.txt
+⭐ 22. What is a fixture in PyTest?
+
+Answer:
+
+A fixture provides reusable setup and teardown functionality for tests. In Playwright, fixtures can be used to create pages, contexts, test data or other dependencies.
+
+Example:
+
+import pytest
+
+
+@pytest.fixture
+def login_page(page):
+    return LoginPage(page)
+
+Then:
+
+def test_login(login_page):
+    login_page.login("admin", "password")
+⭐ 23. How do you run Playwright tests in parallel?
+
+With PyTest:
+
+pytest -n 4
+
+This requires pytest-xdist.
+
+You can also use Playwright's isolation through separate browser contexts/pages so tests don't interfere with each other.
+
+⭐ 24. How do you handle flaky tests?
+
+Answer:
+
+First I identify whether the problem is related to synchronization, unstable locators, test-data dependency, environment issues or application defects. I prefer Playwright's auto-waiting and stable locators instead of sleep(). I also isolate test data, use proper fixtures and capture screenshots/traces for failures. If the failure is genuinely transient, retry can be configured, but I don't use retries to hide real defects.
+
+This is a very good L2/L3 answer.
+
+⭐ 25. What is the difference between wait_for_timeout() and proper waiting?
+page.wait_for_timeout(5000)
+
+is a fixed delay.
+
+Better:
+
+expect(
+    page.get_by_text("Success")
+).to_be_visible()
+
+Answer:
+
+I avoid fixed waits because they make tests slower and can still be unreliable. I prefer condition-based waiting through Playwright's auto-waiting and assertions.
+
+🔥 26. Selenium vs Playwright — scenario question
+
+Interviewer:
+
+You have 6+ years of Selenium experience. Why are you moving to Playwright?
+
+Your answer:
+
+I have strong experience in Selenium-based automation, but modern applications require more reliable synchronization and better browser automation capabilities. Playwright provides built-in auto-waiting, browser-context isolation, powerful locators, multi-page handling, network interception and tracing. I'm leveraging my existing automation and framework-design experience and applying those concepts to Playwright with Python and PyTest.
+
+This is much better than saying:
+
+❌ "Playwright is easier than Selenium."
+
+🔥 27. What happens if the locator matches multiple elements?
+
+Example:
+
+page.get_by_role("button").click()
+
+If multiple matching elements exist, Playwright's strictness can cause an error for actions that expect a single target.
+
+You should make the locator more specific:
+
+page.get_by_role(
+    "button",
+    name="Submit"
+).click()
+
+Or, when genuinely appropriate:
+
+page.get_by_role("button").nth(0).click()
+
+Best practice: prefer a unique, meaningful locator rather than blindly using .nth().
+
+🔥 28. How would you debug a failed test in Jenkins?
+
+Answer:
+
+First I check the Jenkins console logs and test report. Then I look at the failed test, screenshot and trace if configured. I reproduce the failure locally, verify whether it is a locator, synchronization, test-data, environment or application issue, and then fix the appropriate layer. I would avoid simply increasing waits or adding retries without understanding the root cause.
+
+🔥 29. How do you integrate Playwright with Jenkins?
+
+Answer:
+
+Typical flow:
+
+Git
+ ↓
+Jenkins
+ ↓
+Checkout code
+ ↓
+Create Python environment
+ ↓
+Install dependencies
+ ↓
+Install Playwright browsers
+ ↓
+Run pytest
+ ↓
+Generate reports
+ ↓
+Publish artifacts
+
+Example command:
+
+pip install -r requirements.txt
+playwright install
+pytest -v
+🔥 30. Real interview scenario
+
+Interviewer:
+
+Login button sometimes takes 3 seconds to appear. How will you automate it?
+
+❌ Weak answer:
+
+time.sleep(5)
+page.click("#login")
+
+✅ Strong answer:
+
+page.get_by_role(
+    "button",
+    name="Login"
+).click()
+
+Then explain:
+
+I would rely on Playwright's auto-waiting and use a stable locator. If there is a specific application condition that needs to be waited for, I would use an appropriate explicit condition rather than a fixed sleep.

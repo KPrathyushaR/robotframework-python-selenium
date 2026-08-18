@@ -1,0 +1,192 @@
+0–1 min: Tell me about yourself
+
+“Good morning. I’m Prathyusha, and I have around 6 years of experience as a QA Automation Engineer in both manual and automation testing. My primary skills are Python, Selenium, Robot Framework, PyTest, API testing, GitHub and Jenkins.
+
+Currently, I work on cloud platform testing for web-based applications. My responsibilities include requirement analysis, test planning, automation development, API validation, regression testing and CI/CD integration.
+
+I have also worked on AI-assisted automation using Kiro connected with an MCP server. We maintain business requirements and automation guidelines in an MD file. Kiro uses these instructions to assist in generating automation scripts, which I review, execute and validate against expected results.”
+
+⏱️ 1–2 min: Robot Framework + Automation
+What is a Robot Framework library?
+
+“A library is a collection of reusable keywords that provides specific functionality.”
+
+Examples:
+
+SeleniumLibrary → Web automation
+RequestsLibrary → API testing
+Collections → Lists/dictionaries
+OperatingSystem → OS operations
+Why POM?
+
+“POM separates locators and page actions from test logic, improving reusability and maintainability.”
+
+How do you automate a test?
+Requirement
+ ↓
+Test scenarios
+ ↓
+Manual understanding
+ ↓
+Identify automation candidate
+ ↓
+POM/Page Object
+ ↓
+Test data
+ ↓
+Script + assertions
+ ↓
+Execute
+ ↓
+Git
+ ↓
+Jenkins
+ ↓
+Reports
+Why automation?
+
+“To automate stable, repetitive, business-critical regression scenarios, improve speed and consistency, reduce manual effort and get faster feedback.”
+
+Don't say everything should be automated.
+
+⏱️ 2–3 min: API + Jenkins
+How do you validate an API?
+
+“I validate the request, authentication, status code, response body, headers, schema, business fields, response time and data consistency. For critical scenarios, I also compare API data with database or UI data.”
+
+Login → Dashboard
+Login API
+ ↓
+Validate 200
+ ↓
+Extract token
+ ↓
+Pass token
+ ↓
+Dashboard API
+ ↓
+Validate response
+ ↓
+Assertions
+API 200 but UI is wrong?
+
+“First I validate the API response. If the API is correct, I check the Network tab, request parameters, frontend mapping, JavaScript errors, caching and asynchronous processing. I also compare API, database and UI data.”
+
+Jenkins flow
+Git Push
+ ↓
+Jenkins Trigger
+ ↓
+Checkout
+ ↓
+Install dependencies
+ ↓
+Set environment/test data
+ ↓
+Execute Robot/PyTest
+ ↓
+Generate reports
+ ↓
+Publish reports
+ ↓
+Pass/Fail
+ ↓
+Notification
+Local passes but Jenkins fails?
+
+Check:
+
+Environment
+Python/library versions
+Browser/driver
+Configuration
+Environment variables
+Test data
+Network
+Synchronization
+Locators
+Flaky tests
+⏱️ 3–4 min: AI / Kiro / MCP
+Why Kiro?
+
+“Kiro helps us accelerate automation development by using business requirements and automation guidelines to assist in generating automation scripts. It reduces repetitive manual coding effort.”
+
+What is the MD file?
+
+“The MD file is a Markdown file where we maintain business requirements, feature details, scenarios and automation/framework guidelines. It provides reusable instructions for the AI-assisted automation workflow.”
+
+Why MD file?
+
+“It centralizes the business and automation rules, so we don't need to provide the same instructions repeatedly and it helps maintain consistency.”
+
+What is MCP?
+
+“MCP, or Model Context Protocol, provides a standardized way for an AI application such as Kiro to interact with configured external tools and data.”
+
+Remember:
+Kiro = AI-assisted development environment
+MCP = standardized connection/protocol
+MCP Tool = specific capability exposed to Kiro
+MD = requirements + business/automation instructions
+Kiro workflow
+Requirement
+ ↓
+MD File
+ ↓
+Kiro
+ ↓
+MCP
+ ↓
+External Tools/Data
+ ↓
+Generated Script
+ ↓
+Code Review
+ ↓
+Execute
+ ↓
+Expected vs Actual
+ ↓
+Pass/Fail
+How do you validate AI output?
+
+“I don't blindly accept the generated script. I review the code, validate locators, POM structure, business logic, test data and assertions. Then I execute it and compare expected versus actual results.”
+
+If AI generates wrong code?
+
+“I identify whether the issue is with the requirement, prompt, locator, business logic or test data. I correct the appropriate input or script, regenerate or update it, review the changes and execute it again.”
+
+⏱️ 4–5 min: L3 Scenario Questions
+100 tests suddenly fail
+
+“I don't fix them one by one. First I analyze logs and reports and group failures by common root cause. Then I prioritize business-critical failures and fix common issues such as locator or framework changes first. I separate automation, application, data and environment issues and collaborate with the respective teams.”
+
+Production defect escaped
+
+“I perform root-cause analysis, identify why the scenario was missed, add the missing test coverage, automate it if suitable and add it to regression.”
+
+Developer rejects your defect
+
+“I reproduce it, provide evidence, verify the requirement and acceptance criteria, discuss it with the developer and involve the BA/PO if clarification is needed.”
+
+Everything is failing in Jenkins
+
+“I first determine whether it's a common environment or pipeline issue before investigating individual test cases. I check Jenkins logs, dependencies, configuration, environment variables, browser setup and connectivity.”
+
+🔥 10 Lines to Memorize Before Entering
+POM → maintainability and reusability.
+Jenkins → CI/CD and automated execution.
+Git → source-code management.
+Robot Library → reusable keywords.
+API → status + body + headers + schema + business validation.
+Authentication → who you are.
+Authorization → what you can access.
+Kiro → AI-assisted automation development.
+MCP → standardized connection to external tools/data.
+AI output → always review, execute and validate; don't blindly trust it.
+🎯 Final interview strategy
+
+When the client asks “Why?”, answer with the business reason.
+
+When they ask “How?”, give the technical flow.
+When they ask “What if it fails?”, explain root cause → evidence → fix → rerun → regression.

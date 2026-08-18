@@ -81,3 +81,21 @@ for i in numbers:
         duplicates.append(i)
 
 print("Duplicate elements:", duplicates)
+
+# Remove duplicates
+# Find duplicate elements
+# Character frequency
+# First non-repeated character
+# Reverse string
+# Palindrome
+# Fibonacci
+# Prime number
+# Factorial
+# Largest/second largest
+# Sort without sort()
+# Merge two dictionaries
+# Two-sum
+# Two-pointer
+# Count words
+# Anagram
+
